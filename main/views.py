@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import MyBlogs
 from .models import Interiors
 from .models import Exteriors
+from .models import InteriorImage
+from .models import ExteriorImage
 from .forms import CommentForm
 
 
@@ -52,7 +54,7 @@ def add_comment(request, blog_id):
             return redirect('blog_detail', blog_id=blog_id)
     else:
         form = CommentForm()
-    
+
     return render(request, 'main/eachBlog.html', {'blog': blog, 'form': form})
 
 
@@ -64,7 +66,8 @@ def interior_page(request):
 
 def interior_detail(request, interior_id):
     interior = get_object_or_404(Interiors, pk=interior_id)
-    return render(request, 'main/projectSignle.html', {'interior': interior, 'interior_id': interior_id})
+    interior_images = InteriorImage.objects.filter(interior=interior)
+    return render(request, 'main/projectSignle.html', {'interior': interior, 'interior_images': interior_images})
 
 
 def exterior_page(request):
@@ -74,4 +77,6 @@ def exterior_page(request):
 
 def exterior_detail(request, exterior_id):
     exterior = get_object_or_404(Exteriors, pk=exterior_id)
-    return render(request, 'main/projectExterior.html', {'exterior': exterior, 'exterior_id': exterior_id})
+    exterior_images = ExteriorImage.objects.filter(exterior=exterior)
+    return render(request, 'main/projectExterior.html', {'exterior': exterior, 'exterior_images': exterior_images})
+

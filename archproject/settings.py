@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-7b+qbeqxh*l^c6!j10^z(xf5cousvvf%(i+8w@^d^hwowt37jd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Askar.pythonanywhere.com']
 
 
 
@@ -36,10 +36,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Static files (CSS, JavaScript, Images)
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'staticfiles'),
 ]
 
 # Default primary key field type

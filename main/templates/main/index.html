@@ -1,563 +1,700 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<html data-wf-domain="nilsson-template.webflow.io" data-wf-page="64da294579ba36ab02c33cb3" data-wf-site="64da23ffc30f30ecaed159b7"></html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Projects (Vertical)" property="og:title"/>
-    <meta content="Projects (Vertical)" property="twitter:title"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="Webflow" name="generator"/>
-
-
-    <link href="https://assets-global.website-files.com/64da23ffc30f30ecaed159b7/css/nilsson-template.webflow.7e1ccdb8a.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
-    <!-- <link href="https://assets-global.website-files.com/64da23ffc30f30ecaed159b7/64db204df270a03232396f12_favicon.png" rel="shortcut icon" type="image/x-icon"/> -->
-    <!-- <link href="https://assets-global.website-files.com/64da23ffc30f30ecaed159b7/64db2051f270a032323972a0_webclip.png" rel="apple-touch-icon"/> -->
-    <title>Architecture</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-
-
-
-</head>
-
-<body>
-    <header class="pd-20px">
-
-        
-        <header class="pd-20px">
-
-        
-            <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
-                <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <!-- Your logo and brand name -->
-                    <a href="{% url 'home' %}" class="flex items-center">
-                        <img src="media/media/tobe_logo1.png" style="max-width: 60px;" alt="Flowbite Logo" />
-                        <div>
-                            <span class="self-center text-2xl font-semibold whitespace-nowrap">TOBE</span>
-                            <div class="text-meta text-color-muted text-xs">Creative Solutions</div>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta content="Projects (Vertical)" property="og:title"/>
+      <meta content="Projects (Vertical)" property="twitter:title"/>
+      <meta content="width=device-width, initial-scale=1" name="viewport"/>
+      <meta content="Webflow" name="generator"/>
+      <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+      <title>Architecture</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+      <link href="https://cdn.flowbite.com/flowbite.css" rel="stylesheet">
+      <link rel="stylesheet" href="{% static '/css/AllStyles.css' %}">
+   </head>
+   <body style="font-family: 'CenturyGothic', Arial, sans-serif;">
+      <header class="pd-20px">
+         <nav class="text-white px-4 lg:px-6 py-2.5"  style="background-color: #000; position: fixed; top: 0; left: 0; width: 100%; z-index: 999;">
+            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+               <!-- Your logo and brand name -->
+               <a href="{% url 'home' %}" class="flex items-center">
+               <img src="media/media/tobe_mainlogo.png" style="max-height: 35px; margin-right: 10px;" />
+               </a>
+               <!-- Mobile menu button -->
+               <div class="flex items-center lg:order-2">
+                  <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-white rounded-lg lg:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-200">
+                     <span class="sr-only">Open main menu</span>
+                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                     </svg>
+                     <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                     </svg>
+                  </button>
+               </div>
+               <!-- Main navigation menu -->
+               <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+                  <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-16 lg:mt-0">
+                     <li>
+                        <a href="{% url 'home' %}" style="font-family: 'CenturyGothic', Arial, sans-serif;" class="block py-3 pr-6 pl-4 text-xl text-white border-b border-gray-700 transition-all duration-300 transform hover:text-[#cda173] hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Главная</a>
+                     </li>
+                     <!-- Projects button -->
+                     <li class="relative border-b border-gray-700" style="z-index: 10;">
+                        <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                           <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 text-sm text-left block py-3 pr-6 pl-4 text-xl text-white border-b border-gray-700 transition-all duration-300 transform hover:text-[#cda173] hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">
+                              <span style="font-family: 'CenturyGothic', Arial, sans-serif;">Проекты</span>
+                              <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
+                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                              </svg>
+                           </button>
+                           <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                              <div class="px-2 py-2 bg-gray-950 rounded-md shadow">
+                                 <a class="block px-4 py-2 mt-2 text-l text-white border-b border-gray-700 bg-transparent rounded-lg md:mt-0 hover:text-[#cda173] focus:text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:shadow-outline" href="{% url 'interior_page' %}">Интерьер</a>
+                                 <a class="block px-4 py-2 mt-2 text-l text-white bg-transparent rounded-lg md:mt-0 hover:text-[#cda173] focus:text-white hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:shadow-outline" href="{% url 'exterior_page' %}">Экстерьер</a>
+                              </div>
+                           </div>
                         </div>
-                    </a>
-                    <!-- Mobile menu button -->
-                    <div class="flex items-center lg:order-2">
-                        <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-                            <span class="sr-only">Open main menu</span>
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                            </svg>
-                            <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Main navigation menu -->
-                    <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-16 lg:mt-0">
-                            <li>
-                                <a href="{% url 'home' %}" class="block py-3 pr-6 pl-4 text-xl text-gray-700 border-b border-gray-100 transition-all duration-300 transform hover:text-black hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Home</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'about' %}" class="block py-3 pr-6 pl-4 text-xl text-gray-700 border-b border-gray-100 transition-all duration-300 transform hover:text-black hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">About</a>
-                            </li>
-                            <li>
-                                <a href="{% url 'services' %}" class="block py-3 pr-6 pl-4 text-xl text-gray-700 border-b border-gray-100 transition-all duration-300 transform hover:text-black hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Services</a>
-                            </li>
-          
-                            <!-- Add other navigation links as needed -->
-          
-                            <li id="interButton">
-                                <a href="{% url 'blog_page' %}" class="block py-3 pr-6 pl-4 text-xl text-gray-700 border-b border-gray-100 transition-all duration-300 transform hover:text-black hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Blog</a>
-                            </li>
-                            <li id="contactButton">
-                                <a href="{% url 'contact' %}" class="block py-3 pr-6 pl-4 text-xl text-gray-700 border-b border-gray-100 transition-all duration-300 transform hover:text-black hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Contact</a>
-                            </li>
-          
-                            <!-- Projects button -->
-                            <!-- Projects button -->
-                            <li class="relative">
-                                <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                                    <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 text-sm text-left block py-3 pr-6 pl-4 text-xl text-gray-700 border-b border-gray-100 transition-all duration-300 transform hover:text-black hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">
-                                        <span>Projects</span>
-                                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                    </button>
-                                    <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                                        <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
-                                            <a class="block px-4 py-2 mt-2 text-l text-gray-700 border-b border-gray-100 bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{% url 'interior_page' %}">Interior</a>
-                                            <a class="block px-4 py-2 mt-2 text-l text-gray-700 bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{% url 'exterior_page' %}">Exterior</a>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </li>
-                            
-          
-          
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            
-    
-    
-            
-        </header>
-        
-
-
-        
-    </header>
-
-    
-    
-
-    <section class="bg-white" id="mainBeginingContent">
-        <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-            <div class="font-light text-gray-500 sm:text-lg ">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">We didn't reinvent the wheel</h2>
-                <p class="mb-4">We are strategists, designers and developers. Innovators and problem solvers. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need. Small enough to be simple and quick, but big enough to deliver the scope you want at the pace you need.</p>
-                <p>We are strategists, designers and developers. Innovators and problem solvers. Small enough to be simple and quick.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mt-8">
-                <img class="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1">
-                <img class="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2">
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-white">
-      <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-          <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-            <a href="about.html" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-black ring-2 ring-black hover:bg-white hover:text-black hover:ring-black focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-              View projects
-              <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-              </svg>
-            </a>
-          
-          </div>
-      </div>
-    </section>
-
-    <section class="bg-white">
-        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-            <img class="w-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
-            <img class="w-full hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
-            <div class="mt-4 md:mt-0">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Let's create more tools and ideas that brings us together.</h2>
-                <p class="mb-6 font-light text-gray-500 md:text-lg">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
-                <a href="#" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    Get started
-                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-white">
-        <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-            <img class="w-full " src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
-            <img class="w-full hidden " src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
-            <div class="mt-4 md:mt-0">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 ">Let's create more tools and ideas that brings us together.</h2>
-                <p class="mb-6 font-light text-gray-500 md:text-lg ">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
-                <a href="#" class="inline-flex items-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
-                    Get started
-                    <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    
-
-<section class="bg-white">
-  <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">We invest in the world’s potential</h1>
-      <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 ">Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.</p>
-      <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-          <a href="{% url 'about' %}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 ">
-              About Company
-              <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-              </svg>
-          </a>
-      </div>
-  </div>
-</section>
-
-
-<!-- why to choose us section -->
-
-
-<section class="bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')]">
-    <!-- <section class="bg-white]"> -->
-
-    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Why choose us?</h1>
-  
-      <div class="-mx-4 flex flex-wrap p-8">
-      
-          <div class=" px-4 md:w-1/2 lg:w-1/3">
-              <div class="mb-9 rounded-xl bg-white py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9">
-                  <div class="mx-auto mb-7 inline-block"><svg width="53" height="61" viewBox="0 0 53 61" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <rect x="20.8433" y="19.3018" width="10.1675" height="12.201" fill="#ABA8F7"></rect>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M42.1119 5.91343C40.9499 4.62242 39.4875 3.95192 38.2383 4.04801C36.1465 4.20891 33.9414 5.92602 31.8695 8.63549C30.0459 11.0202 28.5417 13.8917 27.5307 16.2458C33.6951 16.5488 37.7115 15.7786 40.1926 14.5916C42.7088 13.3878 43.5948 11.7969 43.7449 10.3715C43.9049 8.85254 43.2637 7.19309 42.1119 5.91343ZM8.75274 16.6855C6.24093 15.1295 4.93328 12.9984 4.69026 10.691C4.42078 8.13252 5.49249 5.64717 7.08955 3.87282C8.6764 2.10982 10.9989 0.817106 13.4643 1.00675C16.9349 1.27372 19.8489 3.94064 22.0221 6.78264C23.4868 8.69803 24.7428 10.8606 25.7343 12.8643C26.7259 10.8606 27.9818 8.69803 29.4465 6.78264C31.6197 3.94064 34.5337 1.27372 38.0043 1.00675C40.4697 0.817106 42.7922 2.10982 44.3791 3.87282C45.9761 5.64717 47.0478 8.13252 46.7784 10.691C46.5353 12.9984 45.2277 15.1295 42.7159 16.6855H49.8822C51.286 16.6855 52.4241 17.8236 52.4241 19.2274V31.1348C52.4241 32.5386 51.286 33.6766 49.8822 33.6766H49.3122V58.6608C49.3122 59.9464 48.1845 60.9886 46.7933 60.9886H31.5363L31.5191 60.9887L31.502 60.9886H20.3521L20.3349 60.9887L20.3178 60.9886H5.0608C3.66963 60.9886 2.54187 59.9464 2.54187 58.6608L2.54187 33.6766C1.13804 33.6766 0 32.5386 0 31.1348V19.2274C0 17.8236 1.13803 16.6855 2.54187 16.6855H8.75274ZM33.0443 58.1952H46.2895V33.6766H33.0443V58.1952ZM33.0443 30.6264H49.3738V19.7358H33.0443V30.6264ZM29.994 19.7358V30.6264H21.8601V19.7358H29.994ZM29.994 33.6766V58.1952H21.8601V33.6766H29.994ZM18.8098 58.1952V33.6766H5.56459V58.1952H18.8098ZM18.8098 30.6264V19.7358H3.05024V30.6264H18.8098ZM13.2303 4.04801C11.9811 3.95192 10.5187 4.62242 9.35668 5.91343C8.20488 7.19309 7.56373 8.85254 7.72372 10.3715C7.87385 11.7969 8.7598 13.3878 11.276 14.5916C13.7571 15.7786 17.7735 16.5488 23.9379 16.2458C22.9269 13.8917 21.4227 11.0202 19.5991 8.63549C17.5272 5.92602 15.3221 4.20891 13.2303 4.04801Z"
-                              fill="#6A64F1"></path>
-                      </svg></div>
-                  <div>
-                      <h3 class="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">Free to Get Started
-                      </h3>
-                      <p class="text-base font-medium text-body-color">FormBold is free to use, we are offering a decent free
-                          plan for experiments, personal projects and projects.</p>
-                  </div>
-              </div>
-          </div>
-      
-      
-      
-          <div class=" px-4 md:w-1/2 lg:w-1/3">
-              <div class="mb-9 rounded-xl bg-white py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9">
-                  <div class="mx-auto mb-7 inline-block"><svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M11.4049 2.9752H37.19C38.0116 2.9752 38.6776 2.30918 38.6776 1.4876C38.6776 0.666021 38.0116 0 37.19 0H10.9091C9.53977 0 8.42974 1.11003 8.42974 2.47933V17.5764L1.04954 22.7859C0.391399 23.2505 0 24.0059 0 24.8115V57.5207C0 58.89 1.11004 60 2.47933 60H57.5205C58.8898 60 59.9999 58.89 59.9999 57.5207V26.4868C59.9999 24.3552 57.488 23.2172 55.8856 24.6229L52.066 27.8242V22.8021C52.066 21.9805 51.4 21.3145 50.5784 21.3145C49.7568 21.3145 49.0908 21.9805 49.0908 22.8021V30.2401C49.0908 30.2656 49.0915 30.291 49.0927 30.3162L30.2843 46.0802L11.4049 29.0236V18.365C11.4051 18.3523 11.4051 18.3396 11.4049 18.3269V2.9752ZM8.42974 21.2181L5.24984 23.4628L8.42974 26.3357V21.2181ZM23.284 43.7729C23.2591 43.7943 23.2333 43.815 23.2066 43.835L5.62021 57.0248H54.8755L37.4608 43.9637L31.9071 48.6143C30.9458 49.4575 29.5009 49.4314 28.5708 48.5539L23.284 43.7729ZM39.8036 42.0019L57.0247 54.9177V27.5813L39.8036 42.0019ZM2.9752 55.2896L21.0384 41.7422L2.9752 25.4071V55.2896Z"
-                              fill="#6A64F1"></path>
-                          <circle cx="46.6115" cy="11.4049" r="9.42147" fill="#6A64F1"></circle>
-                          <path
-                              d="M46.7807 15.868C47.6859 15.868 48.6475 15.6441 49.0878 15.4202L48.7884 14.5452C48.4538 14.6692 47.6436 14.8965 46.8405 14.8965C44.5088 14.8965 43.2478 13.6633 43.2478 11.431C43.2478 9.35033 44.4524 7.90005 46.7525 7.90005C48.6299 7.90005 50.0283 8.9404 50.0247 10.8971C50.0283 12.3198 49.8028 12.9605 49.2393 12.9605C48.9399 12.9605 48.7637 12.7263 48.7602 12.3852V9.10575H47.7775V9.49157H47.7282C47.6155 9.18842 46.9392 8.90939 46.1748 9.01274C45.1921 9.1402 44.2481 9.92907 44.2481 11.4035C44.2481 12.9226 45.0935 13.8149 46.2417 13.8665C47.0413 13.9044 47.6612 13.5565 47.8268 13.1466H47.8691C47.9536 13.6633 48.4185 13.9458 49.1301 13.9079C50.6447 13.8527 51.0779 12.5299 51.0744 10.9556C51.0779 8.69237 49.521 6.94238 46.7771 6.94238C43.8536 6.94238 42.1523 8.7027 42.1488 11.4448C42.1523 14.2524 43.8254 15.868 46.7807 15.868ZM46.5341 12.8779C45.6148 12.8779 45.3048 12.1475 45.3013 11.3621C45.3048 10.5767 45.7521 10.0014 46.5411 10.0014C47.4182 10.0014 47.7423 10.4217 47.7458 11.3587C47.7564 12.3646 47.4253 12.8779 46.5341 12.8779Z"
-                              fill="white"></path>
-                      </svg></div>
-                  <div>
-                      <h3 class="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">Link Multiple Emails
-                      </h3>
-                      <p class="text-base font-medium text-body-color">Link multiple email address under your parent account,
-                          use any of them for your forms to recieve submissions.</p>
-                  </div>
-              </div>
-          </div>
-      
-      
-      
-          <div class=" px-4 md:w-1/2 lg:w-1/3">
-              <div class="mb-9 rounded-xl bg-white py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9">
-                  <div class="mx-auto mb-7 inline-block"><svg width="67" height="60" viewBox="0 0 67 60"
-                          fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M17.892 6.67578C17.892 6.1235 18.3397 5.67578 18.892 5.67578H24.226C26.4351 5.67578 28.226 7.46664 28.226 9.67578V32.789C28.226 33.3413 27.7783 33.789 27.226 33.789C26.6737 33.789 26.226 33.3413 26.226 32.789V9.67578C26.226 8.57121 25.3305 7.67578 24.226 7.67578H18.892C18.3397 7.67578 17.892 7.22807 17.892 6.67578Z"
-                              fill="#6A64F1"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M37.8959 38.7891C37.8959 38.2368 38.3436 37.7891 38.8959 37.7891H49.7859C51.995 37.7891 53.7859 39.5799 53.7859 41.7891V50.5679C53.7859 51.1202 53.3382 51.5679 52.7859 51.5679C52.2336 51.5679 51.7859 51.1202 51.7859 50.5679V41.7891C51.7859 40.6845 50.8905 39.7891 49.7859 39.7891H38.8959C38.3436 39.7891 37.8959 39.3413 37.8959 38.7891Z"
-                              fill="#ABA8F7"></path>
-                          <rect width="20.0016" height="13.3344" rx="2" fill="#6A64F1"></rect>
-                          <rect x="19" y="33" width="21" height="11" rx="2"
-                              fill="#ABA8F7"></rect>
-                          <rect x="39.8958" y="47.666" width="24.6688" height="11.3344" rx="2"
-                              fill="white" stroke="#6A64F1" stroke-width="2"></rect>
-                          <rect x="21" y="18" width="45" height="10" rx="2"
-                              fill="white" stroke="#6A64F1" stroke-width="2">
-                          </rect>
-                      </svg></div>
-                  <div>
-                      <h3 class="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">Easy to Use Form API
-                      </h3>
-                      <p class="text-base font-medium text-body-color">Simple and easy-to use form API all you need to paste
-                          your end-point URL on your form, rest assured by FormBold.</p>
-                  </div>
-              </div>
-          </div>
-      
-      
-          
-          <div class=" px-4 md:w-1/2 lg:w-1/3">
-              <div class="mb-9 rounded-xl bg-white py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9">
-                  <div class="mx-auto mb-7 inline-block"><svg width="58" height="60" viewBox="0 0 58 60"
-                          fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="1" y="1" width="24" height="26" rx="2"
-                              stroke="#6A64F1" stroke-width="2"></rect>
-                          <path
-                              d="M14.6146 17.1967C14.8371 17.4191 14.8392 17.7843 14.5838 17.9678C13.9915 18.3933 13.2769 18.6264 12.5382 18.6264C11.6083 18.6264 10.7165 18.257 10.059 17.5994C9.40148 16.9419 9.03209 16.0501 9.03209 15.1203C9.03209 14.3816 9.26519 13.667 9.69065 13.0747C9.87417 12.8192 10.2393 12.8214 10.4617 13.0438L14.6146 17.1967Z"
-                              fill="#6A64F1"></path>
-                          <path
-                              d="M9.94096 17.0091L10.6493 17.7175L9.11456 19.2522C8.91896 19.4478 8.60183 19.4478 8.40622 19.2522C8.21062 19.0566 8.21062 18.7395 8.40622 18.5439L9.94096 17.0091Z"
-                              fill="#6A64F1"></path>
-                          <path
-                              d="M12.4851 11.0203C12.2627 10.7978 12.2605 10.4327 12.516 10.2492C13.1082 9.82372 13.8229 9.59062 14.5615 9.59062C15.4914 9.59062 16.3832 9.96001 17.0407 10.6175C17.6983 11.275 18.0676 12.1668 18.0676 13.0967C18.0676 13.8354 17.8345 14.55 17.4091 15.1423C17.2256 15.3977 16.8604 15.3956 16.638 15.1732L12.4851 11.0203Z"
-                              fill="#ABA8F7"></path>
-                          <path
-                              d="M17.1588 11.2077L16.4504 10.4994L17.6015 9.34833C17.7482 9.20163 18.0257 9.24127 18.2213 9.43688C18.4169 9.63248 18.4565 9.90997 18.3098 10.0567L17.1588 11.2077Z"
-                              fill="#ABA8F7"></path>
-                          <path
-                              d="M12.5383 12.7575C12.7339 12.5619 13.051 12.5619 13.2466 12.7575C13.4422 12.9531 13.4422 13.2702 13.2466 13.4658L12.0661 14.6464L11.3577 13.9381L12.5383 12.7575Z"
-                              fill="#ADAAFF"></path>
-                          <path
-                              d="M12.5382 12.758C12.7338 12.5624 13.051 12.5624 13.2466 12.758C13.4422 12.9536 13.4422 13.2708 13.2466 13.4664L12.066 14.6469L11.3577 13.9386L12.5382 12.758Z"
-                              fill="#6A64F1"></path>
-                          <path
-                              d="M14.309 14.5276C14.5046 14.332 14.8217 14.332 15.0173 14.5276C15.2129 14.7232 15.2129 15.0403 15.0173 15.2359L13.8368 16.4165L13.1284 15.7081L14.309 14.5276Z"
-                              fill="#6A64F1"></path>
-                          <rect x="31" y="23" width="27" height="37" rx="3"
-                              fill="#6A64F1"></rect>
-                          <path
-                              d="M44.7681 36C43.323 36 42.1462 37.1768 42.1462 38.6219C42.1462 39.4842 42.5743 40.2411 43.2196 40.7194L41.925 42.8578C41.9148 42.8548 41.9035 42.8527 41.8923 42.8496C41.6219 42.7769 41.3402 42.8169 41.0975 42.9561C40.5967 43.246 40.4236 43.8892 40.7124 44.39C40.906 44.7259 41.2593 44.9144 41.6219 44.9144C41.8001 44.9144 41.9814 44.8703 42.1462 44.7751C42.389 44.6348 42.5651 44.4064 42.6378 44.136C42.7106 43.8656 42.6716 43.584 42.5313 43.3412C42.4873 43.2654 42.4269 43.1979 42.3675 43.1364L43.7931 40.7931L43.9324 40.5637L43.703 40.4326C43.0854 40.068 42.6706 39.3931 42.6706 38.6219C42.6706 37.4605 43.6067 36.5244 44.7681 36.5244C45.9295 36.5244 46.8656 37.4605 46.8656 38.6219C46.8656 38.838 46.8359 39.0408 46.7755 39.2364L47.2753 39.392C47.3511 39.1473 47.39 38.8902 47.39 38.6219C47.39 37.1768 46.2132 36 44.7681 36ZM44.7681 37.5731C44.1895 37.5731 43.7194 38.0432 43.7194 38.6219C43.7194 39.2005 44.1895 39.6706 44.7681 39.6706C44.8552 39.6706 44.9412 39.6583 45.0221 39.6378L46.2839 41.9238L46.4068 42.1532L46.6444 42.0303C46.9445 41.8644 47.2845 41.7681 47.6522 41.7681C48.8136 41.7681 49.7497 42.7042 49.7497 43.8656C49.7497 45.027 48.8136 45.9631 47.6522 45.9631C47.0858 45.9631 46.5717 45.7368 46.1938 45.3732L45.8333 45.7501C46.3044 46.2038 46.9475 46.4875 47.6522 46.4875C49.0973 46.4875 50.274 45.3107 50.274 43.8656C50.274 42.4205 49.0973 41.2437 47.6522 41.2437C47.2886 41.2437 46.9516 41.339 46.6362 41.4732L45.4809 39.3839C45.6858 39.1923 45.8169 38.924 45.8169 38.6219C45.8169 38.0432 45.3468 37.5731 44.7681 37.5731ZM40.9828 41.3175C39.8408 41.6022 39 42.6397 39 43.8656C39 45.3107 40.1768 46.4875 41.6219 46.4875C42.9738 46.4875 44.0563 45.4439 44.1946 44.1278H46.6444C46.7611 44.5795 47.1647 44.9144 47.6522 44.9144C48.2308 44.9144 48.7009 44.4443 48.7009 43.8656C48.7009 43.287 48.2308 42.8169 47.6522 42.8169C47.1647 42.8169 46.7611 43.1518 46.6444 43.6034H43.7194V43.8656C43.7194 45.027 42.7833 45.9631 41.6219 45.9631C40.4605 45.9631 39.5244 45.027 39.5244 43.8656C39.5244 42.8804 40.2024 42.061 41.1139 41.8337L40.9828 41.3175Z"
-                              fill="white"></path>
-                          <rect x="32" y="1" width="25" height="16" rx="2"
-                              stroke="#6A64F1" stroke-width="2"></rect>
-                          <g clip-path="url(#clip0_971_7928)">
-                              <path
-                                  d="M42.9 9.52246C42.3264 9.52246 41.8348 10.0141 41.8348 10.5876V13.2422C41.8348 13.8158 42.3264 14.3074 42.9 14.3074C43.4735 14.3074 43.9651 13.8158 43.9651 13.2422V10.5876C43.9651 9.98129 43.5063 9.52246 42.9 9.52246Z"
-                                  fill="#6A64F1"></path>
-                              <path
-                                  d="M39.1638 10.5876C39.1638 11.1611 39.6554 11.6527 40.229 11.6527C40.8025 11.6527 41.2941 11.1611 41.2941 10.5876V9.52246H40.2453C39.6554 9.52246 39.1638 9.98129 39.1638 10.5876Z"
-                                  fill="#6A64F1"></path>
-                              <path
-                                  d="M42.9 4.16406C42.3264 4.16406 41.8348 4.65566 41.8348 5.2292C41.8348 5.80273 42.3264 6.29433 42.9 6.29433H43.9651C43.9651 5.68802 43.9651 5.83551 43.9651 5.2292C43.9651 4.65566 43.5063 4.16406 42.9 4.16406Z"
-                                  fill="#6A64F1"></path>
-                              <path
-                                  d="M40.229 8.96523H42.9C43.4735 8.96523 43.9651 8.47363 43.9651 7.9001C43.9651 7.32656 43.4735 6.83496 42.9 6.83496H40.229C39.6554 6.83496 39.1638 7.32656 39.1638 7.9001C39.1638 8.47363 39.6226 8.96523 40.229 8.96523Z"
-                                  fill="#6A64F1"></path>
-                              <path
-                                  d="M48.242 6.83496C47.6685 6.83496 47.1769 7.32656 47.1769 7.9001V8.96523H48.242C48.8156 8.96523 49.3072 8.47363 49.3072 7.9001C49.3072 7.32656 48.8319 6.83496 48.242 6.83496Z"
-                                  fill="#6A64F1"></path>
-                              <path
-                                  d="M44.5222 5.2292V7.90023C44.5222 8.47376 45.0138 8.96536 45.5874 8.96536C46.1609 8.96536 46.6525 8.47376 46.6525 7.90023V5.2292C46.6525 4.65566 46.1609 4.16406 45.5874 4.16406C44.981 4.16406 44.5222 4.65566 44.5222 5.2292Z"
-                                  fill="#6A64F1"></path>
-                              <path
-                                  d="M46.6525 13.2585C46.6525 12.685 46.1609 12.1934 45.5874 12.1934H44.5222V13.2585C44.5222 13.832 45.0138 14.3236 45.5874 14.3236C46.1609 14.3236 46.6525 13.832 46.6525 13.2585Z"
-                                  fill="#6A64F1"></path>
-                              <path
-                                  d="M48.2584 9.52246H45.5874C45.0138 9.52246 44.5222 10.0141 44.5222 10.5876C44.5222 11.1611 45.0138 11.6527 45.5874 11.6527H48.2584C48.8319 11.6527 49.3235 11.1611 49.3235 10.5876C49.3235 9.98129 48.8319 9.52246 48.2584 9.52246Z"
-                                  fill="#6A64F1"></path>
-                          </g>
-                          <rect x="1" y="34" width="24" height="25" rx="2"
-                              stroke="#6A64F1" stroke-width="2"></rect>
-                          <g clip-path="url(#clip1_971_7928)">
-                              <path
-                                  d="M17.6477 43.6591L16.2036 50.4186C16.0961 50.8949 15.8195 51.0024 15.4201 50.7873L13.254 49.1896L12.194 50.2036C12.0864 50.3111 11.9789 50.4186 11.7331 50.4186L11.9021 48.1911L15.9424 44.5194C16.1114 44.3504 15.8963 44.289 15.6813 44.4273L10.6577 47.5919L8.49161 46.9313C8.01537 46.7777 8.01537 46.4551 8.59915 46.24L17.0178 42.9678C17.4326 42.8449 17.7859 43.06 17.6477 43.6591Z"
-                                  fill="#6A64F1"></path>
-                          </g>
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M31 10.5H26V8.5H31V10.5Z" fill="#6A64F1">
-                          </path>
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M31 47H26V45H31V47Z" fill="#ABA8F7"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd" d="M14 28L14 33L12 33L12 28L14 28Z"
-                              fill="#6A64F1">
-                          </path>
-                          <defs>
-                              <clipPath id="clip0_971_7928">
-                                  <rect width="10.4875" height="10.4875" fill="white" transform="translate(39 4)">
-                                  </rect>
-                              </clipPath>
-                              <clipPath id="clip1_971_7928">
-                                  <rect width="9.83201" height="9.83201" fill="white" transform="translate(8 42)">
-                                  </rect>
-                              </clipPath>
-                          </defs>
-                      </svg></div>
-                  <div>
-                      <h3 class="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">Connect Apps</h3>
-                      <p class="text-base font-medium text-body-color">Connect apps and integrations with your form, get
-                          notified with submitter data when you recieve new submissions.</p>
-                  </div>
-              </div>
-          </div>
-      
-      
-          <div class=" px-4 md:w-1/2 lg:w-1/3">
-              <div class="mb-9 rounded-xl bg-white py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9">
-                  <div class="mx-auto mb-7 inline-block"><svg width="51" height="60" viewBox="0 0 51 60"
-                          fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M33.1015 4.53152C28.1688 2.60657 22.6927 2.60657 17.76 4.53152L3.08781 10.2572V31.4086C3.08781 36.1366 5.05872 40.6505 8.52635 43.8644L24.3812 56.5006C24.9733 57.0494 25.8882 57.0494 26.4802 56.5006L42.3351 43.8644C45.8027 40.6505 47.7736 36.1366 47.7736 31.4086V10.2572L33.1015 4.53152ZM16.6374 1.65499C22.292 -0.551664 28.5695 -0.551662 34.224 1.65499L49.2237 7.50853C50.2113 7.89393 50.8615 8.84554 50.8615 9.90564V31.4086C50.8615 36.9962 48.5322 42.3309 44.4341 46.1291L28.5792 58.7653C26.803 60.4116 24.0585 60.4116 22.2823 58.7653L6.42737 46.1291C2.32926 42.3309 0 36.9962 0 31.4086V9.90564C0 8.84554 0.650144 7.89393 1.63772 7.50853L16.6374 1.65499Z"
-                              fill="#ABA8F7"></path>
-                          <path
-                              d="M25.217 50.5233V8.42143C25.217 7.75383 24.5754 7.27369 23.9349 7.46207L9.15513 11.8091C8.30396 12.0594 7.71946 12.8406 7.71946 13.7278V32.0977C7.71946 34.5312 8.70493 36.861 10.4512 38.5559L23.5206 51.2409C24.1547 51.8564 25.217 51.407 25.217 50.5233Z"
-                              fill="#6A64F1"></path>
-                      </svg></div>
-                  <div>
-                      <h3 class="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">Spam Free &amp;
-                          Encrypted</h3>
-                      <p class="text-base font-medium text-body-color">We use server-side mechanism to make sure submissions
-                          are spam free and all messages are end-to-end encrypted.</p>
-                  </div>
-              </div>
-          </div>
-      
-      
-          <div class=" px-4 md:w-1/2 lg:w-1/3">
-              <div class="mb-9 rounded-xl bg-white py-8 px-7 shadow-md transition-all hover:shadow-lg sm:p-9 lg:px-6 xl:px-9">
-                  <div class="mx-auto mb-7 inline-block"><svg width="52" height="60" viewBox="0 0 52 60"
-                          fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M13.2787 7.3766C12.4639 7.3766 11.8033 8.03716 11.8033 8.85201V15.2455H8.85248V8.85201C8.85248 6.40747 10.8342 4.42578 13.2787 4.42578H46.7213C49.1659 4.42578 51.1476 6.40747 51.1476 8.85201V51.1471C51.1476 53.5916 49.1659 55.5733 46.7213 55.5733H37.8689V52.6225H46.7213C47.5362 52.6225 48.1967 51.9619 48.1967 51.1471V8.85201C48.1967 8.03716 47.5362 7.3766 46.7213 7.3766H13.2787Z"
-                              fill="#6A64F1"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M7.8689 22.6223C7.8689 22.079 8.30927 21.6387 8.8525 21.6387L30.4918 21.6387C31.0351 21.6387 31.4755 22.079 31.4755 22.6223C31.4755 23.1655 31.0351 23.6059 30.4918 23.6059L8.8525 23.6059C8.30927 23.6059 7.8689 23.1655 7.8689 22.6223Z"
-                              fill="#ABA8F7"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M7.8689 29.507C7.8689 28.9638 8.30927 28.5234 8.8525 28.5234L30.4918 28.5234C31.0351 28.5234 31.4755 28.9638 31.4755 29.507C31.4755 30.0503 31.0351 30.4907 30.4918 30.4907L8.8525 30.4907C8.30927 30.4907 7.8689 30.0503 7.8689 29.507Z"
-                              fill="#ABA8F7"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M7.8689 36.3928C7.8689 35.8496 8.30927 35.4092 8.8525 35.4092L30.4918 35.4092C31.0351 35.4092 31.4755 35.8496 31.4755 36.3928C31.4755 36.936 31.0351 37.3764 30.4918 37.3764L8.8525 37.3764C8.30927 37.3764 7.8689 36.936 7.8689 36.3928Z"
-                              fill="#ABA8F7"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M7.8689 43.2776C7.8689 42.7343 8.30927 42.2939 8.8525 42.2939L30.4918 42.2939C31.0351 42.2939 31.4755 42.7343 31.4755 43.2776C31.4755 43.8208 31.0351 44.2612 30.4918 44.2612L8.8525 44.2612C8.30927 44.2612 7.8689 43.8208 7.8689 43.2776Z"
-                              fill="#ABA8F7"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M15.7377 2.95082C15.7377 1.32113 17.0589 0 18.6886 0H23.6066C25.2363 0 26.5574 1.32113 26.5574 2.95082V5.74152C26.5574 6.28475 26.117 6.72512 25.5738 6.72512C25.0306 6.72512 24.5902 6.28475 24.5902 5.74152V2.95082C24.5902 2.40759 24.1498 1.96721 23.6066 1.96721H18.6886C18.1453 1.96721 17.7049 2.40759 17.7049 2.95082V24.5902C17.7049 25.1334 18.1453 25.5738 18.6886 25.5738H20.6558C21.199 25.5738 21.6394 25.1334 21.6394 24.5902V10.7016C21.6394 10.1584 22.0797 9.71803 22.623 9.71803C23.1662 9.71803 23.6066 10.1584 23.6066 10.7016V24.5902C23.6066 26.2199 22.2855 27.541 20.6558 27.541H18.6886C17.0589 27.541 15.7377 26.2199 15.7377 24.5902V2.95082Z"
-                              fill="#6A64F1"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M36.3934 16.7213H2.95082V48.9L11.181 57.0492H36.3934V16.7213ZM2.95082 13.7705H36.3934C38.0231 13.7705 39.3443 15.0916 39.3443 16.7213V57.0492C39.3443 58.6789 38.0231 60 36.3934 60H11.181C10.4034 60 9.65727 59.6931 9.10474 59.146L0.874608 50.9968C0.314904 50.4426 0 49.6876 0 48.9V16.7213C0 15.0916 1.32113 13.7705 2.95082 13.7705Z"
-                              fill="#6A64F1"></path>
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M10.3279 50.6558H1.96721V47.7049H10.8197C12.1777 47.7049 13.2787 48.8059 13.2787 50.1639V58.0328H10.3279V50.6558Z"
-                              fill="#6A64F1"></path>
-                      </svg></div>
-                  <div>
-                      <h3 class="mb-4 text-xl font-bold text-black sm:text-2xl lg:text-xl xl:text-2xl">Attach Large Files
-                      </h3>
-                      <p class="text-base font-medium text-body-color">You can allow end users to attach or upload
-                          attachments, you will recieve a CDN link with submission data.</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-    <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
-        <a href="{% url 'contact' %}" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300">
-            Contact us
-            <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
-    </div>
-
-  </section>  
-
-
-<!-- footer -->
-    
-
-<footer class="bg-white">
-    <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-        <div class="md:flex md:justify-between">
-          <div class="mb-6 md:mb-0">
-              <a href="index.html" class="flex items-center">
-                  <img src="media/media/tobe_logo1.png" class="h-8 me-3" alt="FlowBite Logo" />
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap">TOBE</span>
-              </a>
-          </div>
-          <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-              <div>
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Resources</h2>
-                  <ul class="text-gray-500 font-medium">
-                      <li class="mb-4">
-                          <a href="https://flowbite.com/" class="hover:underline">TOBE</a>
-                      </li>
-                      <li>
-                          <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
-                      </li>
+                     </li>
+                     <li>
+                        <a href="{% url 'about' %}" style="font-family: 'CenturyGothic', Arial, sans-serif;" class="block py-3 pr-6 pl-4 text-xl text-white border-b border-gray-700 transition-all duration-300 transform hover:text-[#cda173] hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">О нас</a>
+                     </li>
+                     <li>
+                        <a href="{% url 'services' %}" style="font-family: 'CenturyGothic', Arial, sans-serif;" class="block py-3 pr-6 pl-4 text-xl text-white border-b border-gray-700 transition-all duration-300 transform hover:text-[#cda173] hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Услуги</a>
+                     </li>
+                     <!-- Add other navigation links as needed -->
+                     <li id="interButton">
+                        <a href="{% url 'blog_page' %}" style="font-family: 'CenturyGothic', Arial, sans-serif;" class="block py-3 pr-6 pl-4 text-xl text-white border-b border-gray-700 transition-all duration-300 transform hover:text-[#cda173] hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Блог</a>
+                     </li>
+                     <li id="contactButton">
+                        <a href="{% url 'contact' %}" style="font-family: 'CenturyGothic', Arial, sans-serif;"" class="block py-3 pr-6 pl-4 text-xl text-white border-b border-gray-700 transition-all duration-300 transform hover:text-[#cda173] hover:translate-x-1 lg:hover:bg-transparent lg:border-0 lg:p-0">Контакты</a>
+                     </li>
                   </ul>
-              </div>
-              <div>
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Follow us</h2>
-                  <ul class="text-gray-500 font-medium">
-                      <li class="mb-4">
-                          <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
-                      </li>
-                      <li>
-                          <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
-                      </li>
-                  </ul>
-              </div>
-              <div>
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase ">Legal</h2>
-                  <ul class="text-gray-500 font-medium">
-                      <li class="mb-4">
-                          <a href="#" class="hover:underline">Privacy Policy</a>
-                      </li>
-                      <li>
-                          <a href="#" class="hover:underline">Terms &amp; Conditions</a>
-                      </li>
-                  </ul>
-              </div>
-          </div>
+               </div>
+            </div>
+         </nav>
+      </header>
+      <!-- test -->
+      <div class="section section--back" style="height: 100vh;">
+         <video autoplay="" muted="" loop="" class="section__back section__back--video">
+            <source src="media/media/skyc.mp4" type="video/mp4">
+         </video>
+         <img class="section__back section__back--image" src="https://zrobim.us/assets/images/mob-screen-new.jpg" alt="ZROBIM architects">
+         <div class="header__header">
+         </div>
+         <hr class="grid-row">
+         <div class="separ separ--small"></div>
+         <div class="section__body">
+            <div class="section__body-col fullwidth">
+               <div class="section__header scrolled" data-scroll="title">
+                  <div class="section__header-title" style="font-family: 'CenturyGothic', Arial, sans-serif;">
+                     Дизайн <strong style="font-family: 'CenturyGothic', Arial, sans-serif; font-weight: bold;">со смыслом</strong>
+                  </div>
+                  <div class="section__header-subtitle" style="font-family: 'CenturyGothic', Arial, sans-serif;">TOBE architects</div>
+               </div>
+            </div>
+         </div>
+         <a href="#section"><img class="header__arrow" style="color: white;" fill="white" src="/media/media/down-arrow.svg" alt="scroll"></a>
+         <div class="separ separ--small"></div>
+         <hr class="grid-row">
+         <div class="header__footer">
+            <div class="header__footer-lang">
+            </div>
+         </div>
       </div>
-      <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-      <div class="sm:flex sm:items-center sm:justify-between">
-          <span class="text-sm text-gray-500 sm:text-center">© 2023 <a href="index.html"  class="hover:underline">Tobe™</a>. All Rights Reserved.
-          </span>
-          <div class="flex mt-4 sm:justify-center sm:mt-0">
-              <a href="#" class="text-gray-500 hover:text-gray-900 ">
-                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                        <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd"/>
-                    </svg>
-                  <span class="sr-only">Facebook page</span>
-              </a>
-              <a href="#" class="text-gray-500 hover:text-gray-900 ms-5">
-                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 21 16">
-                        <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z"/>
-                    </svg>
-                  <span class="sr-only">Discord community</span>
-              </a>
-              <a href="#" class="text-gray-500 hover:text-gray-900 ms-5">
-                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 17">
-                    <path fill-rule="evenodd" d="M20 1.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.344 8.344 0 0 1-2.605.98A4.13 4.13 0 0 0 13.85 0a4.068 4.068 0 0 0-4.1 4.038 4 4 0 0 0 .105.919A11.705 11.705 0 0 1 1.4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 4.1 9.635a4.19 4.19 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 0 14.184 11.732 11.732 0 0 0 6.291 16 11.502 11.502 0 0 0 17.964 4.5c0-.177 0-.35-.012-.523A8.143 8.143 0 0 0 20 1.892Z" clip-rule="evenodd"/>
-                </svg>
-                  <span class="sr-only">Twitter page</span>
-              </a>
-              <a href="#" class="text-gray-500 hover:text-gray-900 ms-5">
-                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" clip-rule="evenodd"/>
+      <!-- Fisrt block with content -->
+      <div id="section" class="section philosophy">
+         <div class="separ"></div>
+         <div class="section__body">
+            <div class="section__body-col">
+               <div class="section__header- scrolled" data-scroll="title">
+                  <div class="section__header-title" style="font-family: 'CenturyGothic', Arial, sans-serif;">
+                     TOBE <strong>architects</strong>
+                  </div>
+                  <div class="section__header-subtitle">Информация о нас</div>
+               </div>
+               <div class="section__buttons" style="margin-top:150px">
+                  <a href="{% url 'about' %}" target="_blank" class="button">Узнайте о нас</a>
+               </div>
+            </div>
+            <div class="section__body-col">
+               <div class="section__content" style="font-family: 'CenturyGothic', Arial, sans-serif;">
+                  <h1>Международная студия архитектуры и дизайна</h1>
+                  <p>Архитектурная студия Tobe Group вдохновляется инновациями мировой архитектуры и дизайна, чтобы создавать уникальные проекты для каждого клиента. Мы стремимся не просто создавать здания и интерьеры, а воплощать мечты и желания наших заказчиков в реальность.</p>
+                  <p>Мы верим, что каждый проект - это искусство, воплощенное в архитектуре, и каждое здание, каждый интерьер должен быть уникальным, как отпечаток пальца. Наша студия работает над каждым проектом с любовью и вниманием к деталям, чтобы создать пространство, которое будет радовать и вдохновлять своих обитателей каждый день.</p>
+               </div>
+            </div>
+         </div>
+         <div class="separ"></div>
+      </div>
+      <hr class="grid-row">
+      <!-- Second block with content -->
+      <div class="section philosophy">
+         <div class="separ"></div>
+         <div class="section__body">
+            <div class="section__body-col">
+               <div class="philosophy__header">
+                  <div class="section__header scrolled" data-scroll="title">
+                     <div class="section__header-title">
+                        <strong>Выходя за Рамки</strong>
+                     </div>
+                     <div class="section__header-subtitle">
+                        слоган нашей компании
+                     </div>
+                  </div>
+               </div>
+               <div id="philoader" class="philosophy__gif">
+                  <svg width="256" height="256" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <rect width="256" height="256" fill="white"></rect>
+                     <rect x="78" y="78" width="20" height="20" fill="#111111"></rect>
+                     <rect x="78" y="118" width="20" height="20" fill="#111111"></rect>
+                     <rect x="78" y="158" width="20" height="20" fill="#111111"></rect>
+                     <rect x="118" y="78" width="20" height="20" fill="#111111"></rect>
+                     <rect x="118" y="118" width="20" height="20" fill="#111111"></rect>
+                     <rect x="118" y="158" width="20" height="20" fill="#111111"></rect>
+                     <rect x="158" y="78" width="20" height="20" fill="#111111"></rect>
+                     <rect x="158" y="118" width="20" height="20" fill="#111111"></rect>
+                     <rect x="158" y="158" width="20" height="20" fill="#111111"></rect>
+                     <path class="path" id="path1" fill="none" stroke="#111" stroke-width="1" d="M182.286 73.7143L88 168H208L88 48V167"></path>
                   </svg>
-                  <span class="sr-only">GitHub account</span>
-              </a>
-              <a href="#" class="text-gray-500 hover:text-gray-900 ms-5">
-                  <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 0a10 10 0 1 0 10 10A10.009 10.009 0 0 0 10 0Zm6.613 4.614a8.523 8.523 0 0 1 1.93 5.32 20.094 20.094 0 0 0-5.949-.274c-.059-.149-.122-.292-.184-.441a23.879 23.879 0 0 0-.566-1.239 11.41 11.41 0 0 0 4.769-3.366ZM8 1.707a8.821 8.821 0 0 1 2-.238 8.5 8.5 0 0 1 5.664 2.152 9.608 9.608 0 0 1-4.476 3.087A45.758 45.758 0 0 0 8 1.707ZM1.642 8.262a8.57 8.57 0 0 1 4.73-5.981A53.998 53.998 0 0 1 9.54 7.222a32.078 32.078 0 0 1-7.9 1.04h.002Zm2.01 7.46a8.51 8.51 0 0 1-2.2-5.707v-.262a31.64 31.64 0 0 0 8.777-1.219c.243.477.477.964.692 1.449-.114.032-.227.067-.336.1a13.569 13.569 0 0 0-6.942 5.636l.009.003ZM10 18.556a8.508 8.508 0 0 1-5.243-1.8 11.717 11.717 0 0 1 6.7-5.332.509.509 0 0 1 .055-.02 35.65 35.65 0 0 1 1.819 6.476 8.476 8.476 0 0 1-3.331.676Zm4.772-1.462A37.232 37.232 0 0 0 13.113 11a12.513 12.513 0 0 1 5.321.364 8.56 8.56 0 0 1-3.66 5.73h-.002Z" clip-rule="evenodd"/>
-                </svg>
-                  <span class="sr-only">Dribbble account</span>
-              </a>
-          </div>
+               </div>
+               <ul class="philosophy__list scrolled" data-scroll="title">
+                  <li class="philosophy__list-point">
+                     <div class="philosophy__item">
+                        <div class="philosophy__item-title" data-number-to="500">500</div>
+                        <div class="philosophy__item-desc">Проектов<br> в&nbsp;общем</div>
+                     </div>
+                  </li>
+                  <li class="philosophy__list-point">
+                     <div class="philosophy__item">
+                        <div class="philosophy__item-title" data-number-to="250">250</div>
+                        <div class="philosophy__item-desc">Реализованных<br> объектов</div>
+                     </div>
+                  </li>
+                  <li class="philosophy__list-point">
+                  </li>
+               </ul>
+            </div>
+            <div class="section__body-col">
+               <div class="section__content">
+                  <h4>Дизайн со смыслом </h4>
+                  <p>Архитектурная студия Tobe Group призвана создавать пространства, которые не просто соответствуют ожиданиям, но и превосходят их. Мы идем дальше традиционного понимания дизайна и архитектуры, стремясь к совершенству в каждой детали.</p>
+                  <p>Наши проекты - это искусство с идеей. Мы не просто проектируем здания и интерьеры, мы создаем окружающую среду, которая вдохновляет и трансформирует пространство в живой организм, приспосабливающийся к потребностям своих обитателей.</p>
+                  <p>Инновации - наша страсть. Мы используем самые передовые технологии и мировые тенденции в дизайне, чтобы сделать каждый проект уникальным и функциональным. Мы стремимся к тому, чтобы наши проекты не просто отвечали потребностям клиентов, но и становились источником вдохновения и новаторских решений для всей отрасли.</p>
+               </div>
+            </div>
+         </div>
+         <div class="separ separ-small"></div>
+         <hr class="grid-row">
       </div>
-    </div>
-  </footer>
+      <hr class="grid-row">
+      <section>
+         <div id="pride" class="section section--dark pride" style="background-color:#000000;" >
+            <div class="relative">
+               <div id="pride-cat-1" class="pride_cats_li">
+                  <div class="pride_cats_item">
+                     <hr class="grid-row">
+                     <div class="separ"></div>
+                     <div class="section__body">
+                        <div class="section__body-col col-sm-p-0">
+                           <div class="pride_cats_img-before">
+                              <img class="pride_cats_img" src="/media/exteriors/2.JPG" alt="ZROBIM architects">
+                           </div>
+                        </div>
+                        <div class="section__body-col pride__item-content">
+                           <div class="cats__header">
+                              <div class="section__header-title">
+                                 АРХИТЕКТУРНОЕ <strong>ПРОЕКТИРОВАНИЕ</strong>
+                              </div>
+                           </div>
+                           <div class="section__content">
+                              <p class="pt-10">При выборе индивидуального проектирования дома с Tobe Group вы получаете уверенность в том, что каждая деталь соответствует вашим желаниям и вкусам. Наша архитектурная студия не приступит к работе, пока не поймет, каким должен быть ваш идеальный дом.</p>
+                           </div>
+                           <div class="section__buttons">
+                              <a href="{% url 'exterior_page' %}" class="button button--white">Посмотреть</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="separ"></div>
+                  </div>
+               </div>
+               <div id="pride-cat-2" class="pride_cats_li">
+                  <div class="pride_cats_item">
+                     <hr class="grid-row">
+                     <div class="separ"></div>
+                     <div class="section__body">
+                        <div class="section__body-col pride__item-content">
+                           <div class="cats__header">
+                              <div class="section__header-title">
+                                 Дизайн <strong>Интерьера </strong>
+                              </div>
+                           </div>
+                           <div class="section__content">
+                              <p class="pt-10">Современный дизайн интерьера для нас - это не просто создание красивых пространств, но и решение комплекса задач. Мы стремимся к созданию функциональных, стильных и инновационных интерьеров для различных типов помещений - от частного жилья до офисов, кафе и музеев.</p>
+                           </div>
+                           <div class="section__buttons">
+                              <a href="{% url 'interior_page' %}" class="button button--white">Посмотреть</a>
+                           </div>
+                        </div>
+                        <div class="section__body-col col-sm-p-0">
+                           <div class="pride_cats_img-before">
+                              <img class="pride_cats_img" src="/media/interiors/1.jpg" alt="TOBE architects">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="separ"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <hr class="grid-row">
+      <section >
+         <div class=" mx-auto text-center py-12">
+            <h1 class="mb-4 text-4xl tracking-tight leading-none text-white md:text-5xl lg:text-6xl" style="color: #383838; font-weight: bold;">Услуги и цены</h1>
+            <div class=" flex flex-wrap p-8 w-full">
+               <div class="mx-auto md:w-1/2 lg:w-1/3 sm:w-full ">
+                  <div class="mb-9 rounded-xl  py-8    lg:px-6 xl:px-9">
+                     <div class="col col-md-8">
+                        <div class="widget" id="widget_20533619" data-id="20533619" data-type="simple-image">
+                           <script type="text/json" class="widget-options">
+                              {"photoData":{"id":"61170908","name":"Alena_Pautova-6490e3cc1cab1a27ca1430875475b064.jpg","crop":[],"size":{"height":"933","width":"1400"},"width":"1400","height":"933","bg":"rgba(83,76,70,.7)"},"storage":"\/\/static-cdn5-2.vigbo.tech\/u9516\/12073\/blog\/3286868\/1575782\/20533619\/"}
+                           </script>
+                        </div>
+                        <div class="widget pt-10 id="widget_74689653" data-id="74689653" data-type="simple-text">
+                           <div class="element simple-text colorbg" id="w_74689653" style="background-color: #f0f0f0; ">
+                              <a class="copy-protect" href="http://alenapautova.ru/Design-progect/post-preview/5656675?view-panel=Design-progect/post-preview/5656675 " target="_blank">
+                                 <div class="element simple-image origin mod--gallery-easy ae--hover-effect__type-scale " id="w_20533619">
+                                    <div class="image-box ae--hover-effect__parent js--hover-effect__parent" style="max-width: 100%; text-align: center; ">
+                                       <div class="image-block ae--hover-effect__child-first">
+                                          <div class="gallery-squery-bg mod--center is--dynamic-loaded" style="background-color: rgba(83,76,70,.7); max-"></div>
+                                          <img style="opacity: 1;  max-width: 100%; height: auto;" class="js--pin-show image-pic gallery-image-in js-dynamic-in-queue is--dynamic-loaded" src="/media/interiors/2ааааа.jpg" data-dynamic="true" alt="" width="1400" height="933" data-width="1400" data-height="933">
+                                          <div class="ae--hover-effect__child-first__inner js--pin-show"></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </a>
+                              <div class="text-box text-box-test1 nocolumns" style="max-width: 80%; -moz-column-gap: 10px; -webkit-column-gap: 10px; column-gap: 10px; letter-spacing: 0em; line-height: 1.3; margin: 0 auto; ">
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16"><span style="font-size:21px;" class="mod--fs_21">ДИЗАЙН-ПРОЕКТ</span></p>
+                                 <p class="mod--fs_16"><span style="font-size:21px;" class="mod--fs_21">6 500 ₽&nbsp;</span><span style="font-size:14px;" class="mod--fs_14">/ м2&nbsp; </span>&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                              </div>
+                              <div class="section__buttons pb-10" style="width: 80%; margin: auto;">
+                                 <button target="_blank" class="button" data-modal-target="popup-modal1"  data-modal-toggle="popup-modal1">Подробнее</button>
+                              </div>
+                              <div id="popup-modal1" style=" z-index: 9999; font-family: 'CenturyGothic', Arial, sans-serif;" tabindex="-1" class="popup-outter hidden w-xl overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center  md:inset-0 h-[calc(100%-1rem)] max-h-full" >
+                                 <div class="popup-inner relative max-h-full">
+                                    <div class="relative bg-white rounded-lg">
+                                       <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal1">
+                                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                          </svg>
+                                          <span class="sr-only">Close modal</span>
+                                       </button>
+                                       <div class="p-4 md:p-5 text-center">
+                                          <div class="container custom__content--max-width">
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_20535467" data-id="20535467" data-type="post-title">
+                                                      <div class="element post-title" id="w_20535467">
+                                                         <div class="widget-content">
+                                                            <style> #w_20535467 .title-shell { color: #000000; font-family: Didact Gothic; font-size: 21px; justify-content: center; } #w_20535467 .title { letter-spacing: 0.15em; margin-right: -0.15em; line-height: 1.2em; } #w_20535467 .title-shell:before, #w_20535467 .title-shell:after { background: url(data:image/svg+xml;base64,CjxzdmcgaGVpZ2h0PSI5IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2RiZGJkYiIgZD0iTTAsNC41TDEsNC41IiBzdHJva2Utd2lkdGg9IjFweCI+PC9wYXRoPjwvc3ZnPgo=); background-position: 50% 50%; background-repeat: repeat-x; } </style>
+                                                            <div class="title-wrapper">
+                                                               <div class="title-shell">
+                                                                  <p class="title stop-css"> УСЛУГИ И ЦЕНЫ </p>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_20535554" data-id="20535554" data-type="post-break-line">
+                                                      <div class="element post-break-line" id="w_20535554">
+                                                         <div class="break-line" style="width: 100%; margin: 0px auto;">
+                                                            <div class="decoration" style="background: url(&quot;data:image/svg+xml;base64,CjxzdmcgaGVpZ2h0PSI5IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2JkYmRiZCIgZD0iTTAsNC41TDEsNC41IiBzdHJva2Utd2lkdGg9IjFweCI+PC9wYXRoPjwvc3ZnPgo=&quot;) center center repeat-x;"></div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="widget" id="widget_20535545" data-id="20535545" data-type="post-title">
+                                                      <div class="element post-title" id="w_20535545">
+                                                         <div class="widget-content">
+                                                            <style> #w_20535545 .title-shell { color: #000000; font-family: Didact Gothic; font-size: 21px; justify-content: center; } #w_20535545 .title { letter-spacing: 0.15em; margin-right: -0.15em; line-height: 1.2em; } #w_20535545 .title-shell:before, #w_20535545 .title-shell:after { background: url(data:image/svg+xml;base64,CjxzdmcgaGVpZ2h0PSI5IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2RiZGJkYiIgZD0iTTAsNC41TDEsNC41IiBzdHJva2Utd2lkdGg9IjFweCI+PC9wYXRoPjwvc3ZnPgo=); background-position: 50% 50%; background-repeat: repeat-x; } </style>
+                                                            <div class="title-wrapper">
+                                                               <div class="title-shell">
+                                                                  <p class="title stop-css"> ДИЗАЙН-ПРОЕКТ </p>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_20535632" data-id="20535632" data-type="simple-text">
+                                                      <div class="element simple-text transparentbg" id="w_20535632" style="background-color: transparent; ">
+                                                         <div class="text-box text-box-test1 nocolumns" style="max-width: 100%; -moz-column-gap: 50px; -webkit-column-gap: 50px; column-gap: 50px; letter-spacing: 0em; line-height: 1.3; font-family: 'Didact Gothic'; font-size: 16px !important; margin: 0 auto; ">
+                                                            <p class="mod--fs_16"><u><span style="font-size:18px;" class="mod--fs_18">ЭТАП 1 - ТЕХНИЧЕСКОЕ ЗАДАНИЕ</span></u><br> <br> <span style="font-size:16px;" class="mod--fs_16">На стадии разработки&nbsp;технического задания происходит выявление и формулировка желаний и потребностей заказчика. На основании всей полученной информации, осуществляется дальнейшее проектирование.</span></p>
+                                                            <p class="mod--fs_16"><br> СОСТАВ РАБОТ:<br> <br> <span style="font-size:16px;" class="mod--fs_16"><span style="letter-spacing: 0em;">- анализ информационных материалов, предоставляемых заказчиком</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="letter-spacing: 0em;">- составление технического задания на разработку дизайн-проекта</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="letter-spacing: 0em;">- план обмера</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="letter-spacing: 0em;">- план обмера коммуникаций</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="letter-spacing: 0em;">- фотофиксация</span></span></p>
+                                                            <p class="mod--fs_16">&nbsp;</p>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="widget" id="widget_20536226" data-id="20536226" data-type="post-break-line">
+                                                      <div class="element post-break-line" id="w_20536226">
+                                                         <div class="break-line" style="width: 100%; margin: 0px auto;">
+                                                            <div class="decoration" style="background: url(&quot;data:image/svg+xml;base64,CjxzdmcgaGVpZ2h0PSI5IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2JkYmRiZCIgZD0iTTAsNC41TDEsNC41IiBzdHJva2Utd2lkdGg9IjFweCI+PC9wYXRoPjwvc3ZnPgo=&quot;) center center repeat-x;"></div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_20536259" data-id="20536259" data-type="simple-text">
+                                                      <div class="element simple-text transparentbg" id="w_20536259" style="background-color: transparent; ">
+                                                         <div class="text-box text-box-test1 nocolumns" style="max-width: 100%; -moz-column-gap: 50px; -webkit-column-gap: 50px; column-gap: 50px; letter-spacing: 0em; line-height: 1.3; font-family: 'Didact Gothic'; font-size: 16px !important; margin: 0 auto; ">
+                                                            <p class="mod--fs_16"><span style="font-size:18px;" class="mod--fs_18"><u>ЭТАП 2 - ЭСКИЗНЫЙ ПРОЕКТ</u></span><br> <br> <span style="font-size:16px;" class="mod--fs_16">На данном этапе утверждается геометрия помещения (без цветов и текстур)</span></p>
+                                                            <p class="mod--fs_16"><br> <span style="font-family:didact gothic,sans-serif;">СОСТАВ РАБОТ:</span><br> <br> <span style="font-size:16px;" class="mod--fs_16"><span style="letter-spacing: 0em;">- <span style="font-family:didact gothic,sans-serif;">разработка планировочного решения, план расстановки мебели и оборудования</span></span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="letter-spacing: 0em;">- создание эскизов, в виде простых 3d изображений, которые условно отображают объемно пространственное решение помещения</span></span></p>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="widget" id="widget_20536337" data-id="20536337" data-type="post-gallery">
+                                                      <script type="text/json" class="widget-options">
+                                                         {"photos":[[{"id":"59878480","width":"1500","height":"1000","file":"Alena_Pautova-44016382a17b20e238722ad66f3aaf2c.jpg"},{"id":"59878477","width":"1000","height":"1500","file":"Alena_Pautova-009c7c2483763332b7a2a8de9c411cc2.jpg"},{"id":"59878479","width":"1500","height":"1000","file":"Alena_Pautova-ef4662ad7d9d83537d8f9a508a287521.jpg"},{"id":"59878483","width":"1000","height":"1500","file":"Alena_Pautova-8f363674026ee48b63878bf858467d3b.jpg"}]],"photoGap":10,"storage":"\/\/static-cdn5-2.vigbo.tech\/u9516\/12073\/blog\/3286868\/1575782\/20536337\/","fullscreen":"y"}
+                                                      </script>
+                                                      <style> .adaptive-desktop #widget_20536337 { width: 50%; } </style>
+                                                      <style> #widget_20536337 .gallery-photo-box-title { color: #000000; font-family: Arial; font-size: 12px; letter-spacing: 0em; line-height: 1.3; } /* For mobile indent*/ .adaptive-mobile #widget_20536337 .wg-post-gallery { margin-top: -5px !important; } .adaptive-mobile #widget_20536337 .wg-post-gallery .gallery-photo-box { padding-top: 5px; padding-bottom: 5px; } </style>
+                                                   </div>
+                                                   <div class="widget" id="widget_20536262" data-id="20536262" data-type="post-break-line">
+                                                      <div class="element post-break-line" id="w_20536262">
+                                                         <div class="break-line" style="width: 100%; margin: 0px auto;">
+                                                            <div class="decoration" style="background: url(&quot;data:image/svg+xml;base64,CjxzdmcgaGVpZ2h0PSI5IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2JkYmRiZCIgZD0iTTAsNC41TDEsNC41IiBzdHJva2Utd2lkdGg9IjFweCI+PC9wYXRoPjwvc3ZnPgo=&quot;) center center repeat-x;"></div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row pb-10">
+                                                <div class="col col-md-24">
+                                                   <div class="contact-form-button-wrapper pt-5" style="width: 40vw; margin-right: auto; margin-left: auto;">
+                                                      <a href="https://wa.me/777777777" class="button primary w-button" style="display: flex; background-color: #25D366; justify-content: center;" onmouseover="this.style.backgroundColor='#1AAE4F';"  onmouseout="this.style.backgroundColor='#25D366';">
+                                                      Написать в Whatsapp 
+                                                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 5 70 64" style="vertical-align: middle; margin-left: 5px;">
+                                                         <path fill="#FFFFFF" d="M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 29.079097 3.1186875 32.88588 4.984375 36.208984 L 2.0371094 46.730469 A 1.0001 1.0001 0 0 0 3.2402344 47.970703 L 14.210938 45.251953 C 17.434629 46.972929 21.092591 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 21.278025 46 17.792121 45.029635 14.761719 43.333984 A 1.0001 1.0001 0 0 0 14.033203 43.236328 L 4.4257812 45.617188 L 7.0019531 36.425781 A 1.0001 1.0001 0 0 0 6.9023438 35.646484 C 5.0606869 32.523592 4 28.890107 4 25 C 4 13.390466 13.390466 4 25 4 z M 16.642578 13 C 16.001539 13 15.086045 13.23849 14.333984 14.048828 C 13.882268 14.535548 12 16.369511 12 19.59375 C 12 22.955271 14.331391 25.855848 14.613281 26.228516 L 14.615234 26.228516 L 14.615234 26.230469 C 14.588494 26.195329 14.973031 26.752191 15.486328 27.419922 C 15.999626 28.087653 16.717405 28.96464 17.619141 29.914062 C 19.422612 31.812909 21.958282 34.007419 25.105469 35.349609 C 26.554789 35.966779 27.698179 36.339417 28.564453 36.611328 C 30.169845 37.115426 31.632073 37.038799 32.730469 36.876953 C 33.55263 36.755876 34.456878 36.361114 35.351562 35.794922 C 36.246248 35.22873 37.12309 34.524722 37.509766 33.455078 C 37.786772 32.688244 37.927591 31.979598 37.978516 31.396484 C 38.003976 31.104927 38.007211 30.847602 37.988281 30.609375 C 37.969311 30.371148 37.989581 30.188664 37.767578 29.824219 C 37.302009 29.059804 36.774753 29.039853 36.224609 28.767578 C 35.918939 28.616297 35.048661 28.191329 34.175781 27.775391 C 33.303883 27.35992 32.54892 26.991953 32.083984 26.826172 C 31.790239 26.720488 31.431556 26.568352 30.914062 26.626953 C 30.396569 26.685553 29.88546 27.058933 29.587891 27.5 C 29.305837 27.918069 28.170387 29.258349 27.824219 29.652344 C 27.819619 29.649544 27.849659 29.663383 27.712891 29.595703 C 27.284761 29.383815 26.761157 29.203652 25.986328 28.794922 C 25.2115 28.386192 24.242255 27.782635 23.181641 26.847656 L 23.181641 26.845703 C 21.603029 25.455949 20.497272 23.711106 20.148438 23.125 C 20.171937 23.09704 20.145643 23.130901 20.195312 23.082031 L 20.197266 23.080078 C 20.553781 22.728924 20.869739 22.309521 21.136719 22.001953 C 21.515257 21.565866 21.68231 21.181437 21.863281 20.822266 C 22.223954 20.10644 22.02313 19.318742 21.814453 18.904297 L 21.814453 18.902344 C 21.828863 18.931014 21.701572 18.650157 21.564453 18.326172 C 21.426943 18.001263 21.251663 17.580039 21.064453 17.130859 C 20.690033 16.232501 20.272027 15.224912 20.023438 14.634766 L 20.023438 14.632812 C 19.730591 13.937684 19.334395 13.436908 18.816406 13.195312 C 18.298417 12.953717 17.840778 13.022402 17.822266 13.021484 L 17.820312 13.021484 C 17.450668 13.004432 17.045038 13 16.642578 13 z M 16.642578 15 C 17.028118 15 17.408214 15.004701 17.726562 15.019531 C 18.054056 15.035851 18.033687 15.037192 17.970703 15.007812 C 17.906713 14.977972 17.993533 14.968282 18.179688 15.410156 C 18.423098 15.98801 18.84317 16.999249 19.21875 17.900391 C 19.40654 18.350961 19.582292 18.773816 19.722656 19.105469 C 19.863021 19.437122 19.939077 19.622295 20.027344 19.798828 L 20.027344 19.800781 L 20.029297 19.802734 C 20.115837 19.973483 20.108185 19.864164 20.078125 19.923828 C 19.867096 20.342656 19.838461 20.445493 19.625 20.691406 C 19.29998 21.065838 18.968453 21.483404 18.792969 21.65625 C 18.639439 21.80707 18.36242 22.042032 18.189453 22.501953 C 18.016221 22.962578 18.097073 23.59457 18.375 24.066406 C 18.745032 24.6946 19.964406 26.679307 21.859375 28.347656 C 23.05276 29.399678 24.164563 30.095933 25.052734 30.564453 C 25.940906 31.032973 26.664301 31.306607 26.826172 31.386719 C 27.210549 31.576953 27.630655 31.72467 28.119141 31.666016 C 28.607627 31.607366 29.02878 31.310979 29.296875 31.007812 L 29.298828 31.005859 C 29.655629 30.601347 30.715848 29.390728 31.224609 28.644531 C 31.246169 28.652131 31.239109 28.646231 31.408203 28.707031 L 31.408203 28.708984 L 31.410156 28.708984 C 31.487356 28.736474 32.454286 29.169267 33.316406 29.580078 C 34.178526 29.990889 35.053561 30.417875 35.337891 30.558594 C 35.748225 30.761674 35.942113 30.893881 35.992188 30.894531 C 35.995572 30.982516 35.998992 31.07786 35.986328 31.222656 C 35.951258 31.624292 35.8439 32.180225 35.628906 32.775391 C 35.523582 33.066746 34.975018 33.667661 34.283203 34.105469 C 33.591388 34.543277 32.749338 34.852514 32.4375 34.898438 C 31.499896 35.036591 30.386672 35.087027 29.164062 34.703125 C 28.316336 34.437036 27.259305 34.092596 25.890625 33.509766 C 23.114812 32.325956 20.755591 30.311513 19.070312 28.537109 C 18.227674 27.649908 17.552562 26.824019 17.072266 26.199219 C 16.592866 25.575584 16.383528 25.251054 16.208984 25.021484 L 16.207031 25.019531 C 15.897202 24.609805 14 21.970851 14 19.59375 C 14 17.077989 15.168497 16.091436 15.800781 15.410156 C 16.132721 15.052495 16.495617 15 16.642578 15 z"></path>
+                                                      </svg>
+                                                      </a>
+                                                   </div>
+                                                   <div class="contact-form-button-wrapper pt-5" style="width: 40vw; margin-right: auto; margin-left: auto;">
+                                                      <a href="https://t.me/john" class="button primary w-button" style="display: flex; background-color: #229ED9;justify-content: center;" onmouseover="this.style.backgroundColor='#1678B0';" onmouseout="this.style.backgroundColor='#229ED9';">Написать в Telegram <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 10 64 64">
+                                                         <path fill="#FFFFFF" d="M32,10c12.15,0,22,9.85,22,22s-9.85,22-22,22s-22-9.85-22-22S19.85,10,32,10z M39.589,40.968	c0.404-1.241,2.301-13.615,2.534-16.054c0.071-0.738-0.163-1.229-0.619-1.449c-0.553-0.265-1.371-0.133-2.322,0.21	c-1.303,0.47-17.958,7.541-18.92,7.951c-0.912,0.388-1.775,0.81-1.775,1.423c0,0.431,0.256,0.673,0.96,0.924	c0.732,0.261,2.577,0.82,3.668,1.121c1.05,0.29,2.243,0.038,2.913-0.378c0.709-0.441,8.901-5.921,9.488-6.402	c0.587-0.48,1.056,0.135,0.576,0.616c-0.48,0.48-6.102,5.937-6.844,6.693c-0.901,0.917-0.262,1.868,0.343,2.249	c0.689,0.435,5.649,3.761,6.396,4.295c0.747,0.534,1.504,0.776,2.198,0.776C38.879,42.942,39.244,42.028,39.589,40.968z"></path>
+                                                         </svg> </a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>							  
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="  md:w-1/2 lg:w-1/3 sm:w-full ">
+                  <div class="mb-9 rounded-xl bg-white py-8   lg:px-6 xl:px-9">
+                     <div class="col col-md-8">
+                        <div class="widget" id="widget_60874669" data-id="60874669" data-type="simple-image">
+                           <script type="text/json" class="widget-options">
+                              {"photoData":{"id":"59878013","name":"Alena_Pautova-8f5c8266a4e6056a61159832cd6a2487.jpg","crop":[],"size":{"height":"3997","width":"6000"},"width":"6000","height":"3997","bg":"rgba(133,131,129,.7)"},"storage":"\/\/static-cdn5-2.vigbo.tech\/u9516\/12073\/blog\/3286868\/1575782\/60874669\/"}
+                           </script>
+                        </div>
+                        <div class="widget pt-10" id="widget_74689653" data-id="74689653" data-type="simple-text">
+                           <div class="element simple-text colorbg" id="w_74689653" style="background-color: #f0f0f0; ">
+                              <a class="copy-protect" href="http://alenapautova.ru/avtorskij-nadzor/post-preview/5661195?view-panel=avtorskij-nadzor/post-preview/5661195 " target="_self">
+                                 <div class="element simple-image origin mod--gallery-easy " id="w_60874669">
+                                    <div class="image-box ae--hover-effect__parent js--hover-effect__parent" style="max-width: 100%; text-align: center; ">
+                                       <div class="image-block ae--hover-effect__child-first">
+                                          <div class="gallery-squery-bg mod--center is--dynamic-loaded" style="background-color: rgba(133,131,129,.7); max-"></div>
+                                          <img style="opacity: 1;  max-width: 100%; height: 40vh;" class="js--pin-show image-pic gallery-image-in js-dynamic-in-queue is--dynamic-loaded" src="/media/interior_images/5.jpg"  data-dynamic="true" alt="" width="6000" height="3997" data-width="6000" data-height="3997">
+                                          <div class="ae--hover-effect__child-first__inner js--pin-show"></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </a>
+                              <div class="text-box text-box-test1 nocolumns" style="max-width: 80%; -moz-column-gap: 10px; -webkit-column-gap: 10px; column-gap: 10px; letter-spacing: 0em; line-height: 1.3; margin: 0 auto; ">
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16"><span style="font-size:21px;" class="mod--fs_21">ДИЗАЙН-ПРОЕКТ</span></p>
+                                 <p class="mod--fs_16"><span style="font-size:21px;" class="mod--fs_21">6 500 ₽&nbsp;</span><span style="font-size:14px;" class="mod--fs_14">/ м2&nbsp; </span>&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                              </div>
+                              <div class="section__buttons pb-10" style="width: 80%; margin: auto;">
+                                 <button target="_blank" class="button" data-modal-target="popup-modal2"  data-modal-toggle="popup-modal2">Подробнее</button>
+                              </div>
+                              <div id="popup-modal2" style=" z-index: 9999; font-family: 'CenturyGothic', Arial, sans-serif;" tabindex="-1" class="popup-outter hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                 <div class="popup-inner relative p-4  max-h-full" > 
+                                    <div class="relative bg-white rounded-lg" >
+                                       <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal2">
+                                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                          </svg>
+                                          <span class="sr-only">Close modal</span>
+                                       </button>
+                                       <div class="p-4 md:p-5 text-center">
+                                          <div class="container custom__content--max-width">
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_20607347" data-id="20607347" data-type="simple-text">
+                                                      <div class="element simple-text transparentbg" id="w_20607347" style="background-color: transparent; ">
+                                                         <div class="text-box text-box-test1 nocolumns" style="max-width: 100%; -moz-column-gap: 50px; -webkit-column-gap: 50px; column-gap: 50px; letter-spacing: 0em; line-height: 1.3; font-family: 'Didact Gothic'; font-size: 16px !important; margin: 0 auto; ">
+                                                            <p class="mod--fs_16"><span style="font-size:18px;" class="mod--fs_18"><u><span style="font-family:didact gothic,sans-serif;">ЭТАП 3 - ВИЗУАЛИЗАЦИИ</span></u></span><br> &nbsp;</p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16">Фотореалистичная визуализация дает полное представление о том, какой будет интерьер. На данном этапе согласовываются материалы отделки, цвета и фактуры.</span></p>
+                                                            <p class="mod--fs_16">&nbsp;</p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="font-family:didact gothic,sans-serif;">СОСТАВ РАБОТ:</span><br> <br> <span style="letter-spacing: 0em;">-&nbsp;3D визуализация согласованных помещений проекта, не включая подсобные и технические помещения</span></span></p>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="widget" id="widget_20607353" data-id="20607353" data-type="post-gallery">
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_20607446" data-id="20607446" data-type="simple-text">
+                                                      <div class="element simple-text transparentbg" id="w_20607446" style="background-color: transparent; ">
+                                                         <div class="text-box text-box-test1 nocolumns" style="max-width: 100%; -moz-column-gap: 50px; -webkit-column-gap: 50px; column-gap: 50px; letter-spacing: 0em; line-height: 1.3; font-family: 'Didact Gothic'; font-size: 16px !important; margin: 0 auto; ">
+                                                            <p class="mod--fs_16"><span style="font-size:18px;" class="mod--fs_18"><u>ЭТАП 4 - РАБОЧИЙ ПРОЕКТ</u></span><br> &nbsp;</p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16">Включает в себя все необходимые для реализации дизайн-проекта чертежи:</span></p>
+                                                            <p class="mod--fs_16">&nbsp;</p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план обмера</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план обмера коммуникаций</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план демонтажа</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план возводимых конструкций</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- сводный план демонтируемых и возводимых конструкций</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план расстановки мебели&nbsp;</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план теплых полов</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план размещения кондиционеров</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план размещения сантехнического оборудования</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план полов&nbsp;</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- план потолков</span></p>
+                                                            <p class="mod--fs_16"><span style="letter-spacing: 0em; font-size: 16px; background-color: transparent;" class="mod--fs_16">- разрезы по потолкам</span></p>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="widget" id="widget_20607449" data-id="20607449" data-type="post-break-line">
+                                                      <div class="element post-break-line" id="w_20607449">
+                                                         <div class="break-line" style="width: 100%; margin: 0px auto;">
+                                                            <div class="decoration" style="background: url(&quot;data:image/svg+xml;base64,CjxzdmcgaGVpZ2h0PSI5IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2JkYmRiZCIgZD0iTTAsNC41TDEsNC41IiBzdHJva2Utd2lkdGg9IjFweCI+PC9wYXRoPjwvc3ZnPgo=&quot;) center center repeat-x;"></div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row pb-10">
+                                                <div class="col col-md-24">
+                                                   <div class="contact-form-button-wrapper pt-5" style="width: 40vw; margin-right: auto; margin-left: auto;">
+                                                      <a href="https://wa.me/777777777" class="button primary w-button" style="display: flex; background-color: #25D366; justify-content: center;" onmouseover="this.style.backgroundColor='#1AAE4F';"  onmouseout="this.style.backgroundColor='#25D366';">
+                                                      Написать в Whatsapp 
+                                                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 5 70 64" style="vertical-align: middle; margin-left: 5px;">
+                                                         <path fill="#FFFFFF" d="M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 29.079097 3.1186875 32.88588 4.984375 36.208984 L 2.0371094 46.730469 A 1.0001 1.0001 0 0 0 3.2402344 47.970703 L 14.210938 45.251953 C 17.434629 46.972929 21.092591 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 21.278025 46 17.792121 45.029635 14.761719 43.333984 A 1.0001 1.0001 0 0 0 14.033203 43.236328 L 4.4257812 45.617188 L 7.0019531 36.425781 A 1.0001 1.0001 0 0 0 6.9023438 35.646484 C 5.0606869 32.523592 4 28.890107 4 25 C 4 13.390466 13.390466 4 25 4 z M 16.642578 13 C 16.001539 13 15.086045 13.23849 14.333984 14.048828 C 13.882268 14.535548 12 16.369511 12 19.59375 C 12 22.955271 14.331391 25.855848 14.613281 26.228516 L 14.615234 26.228516 L 14.615234 26.230469 C 14.588494 26.195329 14.973031 26.752191 15.486328 27.419922 C 15.999626 28.087653 16.717405 28.96464 17.619141 29.914062 C 19.422612 31.812909 21.958282 34.007419 25.105469 35.349609 C 26.554789 35.966779 27.698179 36.339417 28.564453 36.611328 C 30.169845 37.115426 31.632073 37.038799 32.730469 36.876953 C 33.55263 36.755876 34.456878 36.361114 35.351562 35.794922 C 36.246248 35.22873 37.12309 34.524722 37.509766 33.455078 C 37.786772 32.688244 37.927591 31.979598 37.978516 31.396484 C 38.003976 31.104927 38.007211 30.847602 37.988281 30.609375 C 37.969311 30.371148 37.989581 30.188664 37.767578 29.824219 C 37.302009 29.059804 36.774753 29.039853 36.224609 28.767578 C 35.918939 28.616297 35.048661 28.191329 34.175781 27.775391 C 33.303883 27.35992 32.54892 26.991953 32.083984 26.826172 C 31.790239 26.720488 31.431556 26.568352 30.914062 26.626953 C 30.396569 26.685553 29.88546 27.058933 29.587891 27.5 C 29.305837 27.918069 28.170387 29.258349 27.824219 29.652344 C 27.819619 29.649544 27.849659 29.663383 27.712891 29.595703 C 27.284761 29.383815 26.761157 29.203652 25.986328 28.794922 C 25.2115 28.386192 24.242255 27.782635 23.181641 26.847656 L 23.181641 26.845703 C 21.603029 25.455949 20.497272 23.711106 20.148438 23.125 C 20.171937 23.09704 20.145643 23.130901 20.195312 23.082031 L 20.197266 23.080078 C 20.553781 22.728924 20.869739 22.309521 21.136719 22.001953 C 21.515257 21.565866 21.68231 21.181437 21.863281 20.822266 C 22.223954 20.10644 22.02313 19.318742 21.814453 18.904297 L 21.814453 18.902344 C 21.828863 18.931014 21.701572 18.650157 21.564453 18.326172 C 21.426943 18.001263 21.251663 17.580039 21.064453 17.130859 C 20.690033 16.232501 20.272027 15.224912 20.023438 14.634766 L 20.023438 14.632812 C 19.730591 13.937684 19.334395 13.436908 18.816406 13.195312 C 18.298417 12.953717 17.840778 13.022402 17.822266 13.021484 L 17.820312 13.021484 C 17.450668 13.004432 17.045038 13 16.642578 13 z M 16.642578 15 C 17.028118 15 17.408214 15.004701 17.726562 15.019531 C 18.054056 15.035851 18.033687 15.037192 17.970703 15.007812 C 17.906713 14.977972 17.993533 14.968282 18.179688 15.410156 C 18.423098 15.98801 18.84317 16.999249 19.21875 17.900391 C 19.40654 18.350961 19.582292 18.773816 19.722656 19.105469 C 19.863021 19.437122 19.939077 19.622295 20.027344 19.798828 L 20.027344 19.800781 L 20.029297 19.802734 C 20.115837 19.973483 20.108185 19.864164 20.078125 19.923828 C 19.867096 20.342656 19.838461 20.445493 19.625 20.691406 C 19.29998 21.065838 18.968453 21.483404 18.792969 21.65625 C 18.639439 21.80707 18.36242 22.042032 18.189453 22.501953 C 18.016221 22.962578 18.097073 23.59457 18.375 24.066406 C 18.745032 24.6946 19.964406 26.679307 21.859375 28.347656 C 23.05276 29.399678 24.164563 30.095933 25.052734 30.564453 C 25.940906 31.032973 26.664301 31.306607 26.826172 31.386719 C 27.210549 31.576953 27.630655 31.72467 28.119141 31.666016 C 28.607627 31.607366 29.02878 31.310979 29.296875 31.007812 L 29.298828 31.005859 C 29.655629 30.601347 30.715848 29.390728 31.224609 28.644531 C 31.246169 28.652131 31.239109 28.646231 31.408203 28.707031 L 31.408203 28.708984 L 31.410156 28.708984 C 31.487356 28.736474 32.454286 29.169267 33.316406 29.580078 C 34.178526 29.990889 35.053561 30.417875 35.337891 30.558594 C 35.748225 30.761674 35.942113 30.893881 35.992188 30.894531 C 35.995572 30.982516 35.998992 31.07786 35.986328 31.222656 C 35.951258 31.624292 35.8439 32.180225 35.628906 32.775391 C 35.523582 33.066746 34.975018 33.667661 34.283203 34.105469 C 33.591388 34.543277 32.749338 34.852514 32.4375 34.898438 C 31.499896 35.036591 30.386672 35.087027 29.164062 34.703125 C 28.316336 34.437036 27.259305 34.092596 25.890625 33.509766 C 23.114812 32.325956 20.755591 30.311513 19.070312 28.537109 C 18.227674 27.649908 17.552562 26.824019 17.072266 26.199219 C 16.592866 25.575584 16.383528 25.251054 16.208984 25.021484 L 16.207031 25.019531 C 15.897202 24.609805 14 21.970851 14 19.59375 C 14 17.077989 15.168497 16.091436 15.800781 15.410156 C 16.132721 15.052495 16.495617 15 16.642578 15 z"></path>
+                                                      </svg>
+                                                      </a>
+                                                   </div>
+                                                   <div class="contact-form-button-wrapper pt-5" style="width: 40vw; margin-right: auto; margin-left: auto;">
+                                                      <a href="https://t.me/john" class="button primary w-button" style="display: flex; background-color: #229ED9;justify-content: center;" onmouseover="this.style.backgroundColor='#1678B0';" onmouseout="this.style.backgroundColor='#229ED9';">Написать в Telegram <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 10 64 64">
+                                                         <path fill="#FFFFFF" d="M32,10c12.15,0,22,9.85,22,22s-9.85,22-22,22s-22-9.85-22-22S19.85,10,32,10z M39.589,40.968	c0.404-1.241,2.301-13.615,2.534-16.054c0.071-0.738-0.163-1.229-0.619-1.449c-0.553-0.265-1.371-0.133-2.322,0.21	c-1.303,0.47-17.958,7.541-18.92,7.951c-0.912,0.388-1.775,0.81-1.775,1.423c0,0.431,0.256,0.673,0.96,0.924	c0.732,0.261,2.577,0.82,3.668,1.121c1.05,0.29,2.243,0.038,2.913-0.378c0.709-0.441,8.901-5.921,9.488-6.402	c0.587-0.48,1.056,0.135,0.576,0.616c-0.48,0.48-6.102,5.937-6.844,6.693c-0.901,0.917-0.262,1.868,0.343,2.249	c0.689,0.435,5.649,3.761,6.396,4.295c0.747,0.534,1.504,0.776,2.198,0.776C38.879,42.942,39.244,42.028,39.589,40.968z"></path>
+                                                         </svg> </a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class=" md:w-1/2 lg:w-1/3 sm:w-ful">
+                  <div class="mb-9 rounded-xl bg-white py-8  lg:px-6 xl:px-9">
+                     <div class="col col-md-8">
+                        <div class="widget" id="widget_20533622" data-id="20533622" data-type="simple-image">
+                           <script type="text/json" class="widget-options">
+                              {"photoData":{"id":"59878229","name":"Alena_Pautova-cceae2c2a6272a7fa55b4657cb15ef27.jpg","crop":[],"size":{"height":"3997","width":"6000"},"width":"6000","height":"3997","bg":"rgba(136,133,137,.7)"},"storage":"\/\/static-cdn5-2.vigbo.tech\/u9516\/12073\/blog\/3286868\/1575782\/20533622\/"}
+                           </script>
+                        </div>
+                        <div class="widget pt-10" id="widget_74689653" data-id="74689653" data-type="simple-text">
+                           <div class="element simple-text colorbg" id="w_74689653" style="background-color: #f0f0f0; ">
+                              <a>
+                                 <div class="element simple-image origin mod--gallery-easy " id="w_20533622">
+                                    <div class="image-box ae--hover-effect__parent js--hover-effect__parent" style="max-width: 100%; text-align: center; ">
+                                       <div class="image-block ae--hover-effect__child-first">
+                                          <div class="gallery-squery-bg mod--center is--dynamic-loaded" style="background-color: rgba(136,133,137,.7); max-"></div>
+                                          <img style="opacity: 1;  max-width: 100%; height: 40vh;" class="js--pin-show image-pic gallery-image-in js-dynamic-in-queue is--dynamic-loaded" src="/media/interior_images/1aaaaaa.jpg"  data-dynamic="true" alt="" width="6000" height="3997" data-width="6000" data-height="3997">
+                                          <div class="ae--hover-effect__child-first__inner js--pin-show"></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </a>
+                              <div class="text-box text-box-test1 nocolumns" style="max-width: 80%; -moz-column-gap: 10px; -webkit-column-gap: 10px; column-gap: 10px; letter-spacing: 0em; line-height: 1.3; margin: 0 auto; ">
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16"><span style="font-size:21px;" class="mod--fs_21">ДИЗАЙН-ПРОЕКТ</span></p>
+                                 <p class="mod--fs_16"><span style="font-size:21px;" class="mod--fs_21">6 500 ₽&nbsp;</span><span style="font-size:14px;" class="mod--fs_14">/ м2&nbsp; </span>&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                                 <p class="mod--fs_16">&nbsp;</p>
+                              </div>
+                              <div class="section__buttons pb-10" style="width: 80%; margin: auto;">
+                                 <button target="_blank" class="button" data-modal-target="popup-modal3"  data-modal-toggle="popup-modal3">Подробнее</button>
+                              </div>
+                              <div id="popup-modal3" style="z-index: 9999; font-family: 'CenturyGothic', Arial, sans-serif;"  tabindex="-1" class="popup-outter hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                 <div class="popup-inner p-4 max-h-full">
+                                    <div class="relative bg-white rounded-lg shadow">
+                                       <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal3">
+                                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                          </svg>
+                                          <span class="sr-only">Close modal</span>
+                                       </button>
+                                       <div class="section__content">
+                                          <div class="container custom__content--max-width">
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_62182422" data-id="62182422" data-type="post-indent">
+                                                      <div class="wg-post-indent" id="w_62182422">
+                                                         <div class="wg-post-indent__inner" style="width: 100%; height: 40px;"></div>
+                                                      </div>
+                                                   </div>
+                                                   <div class="widget" id="widget_62182423" data-id="62182423" data-type="post-title">
+                                                      <div class="element post-title" id="w_62182423">
+                                                         <div class="widget-content">
+                                                            <style> #w_62182423 .title-shell { color: #000000; font-family: Didact Gothic; font-size: 21px; justify-content: center; } #w_62182423 .title { letter-spacing: 0.15em; margin-right: -0.15em; line-height: 1.2em; } #w_62182423 .title-shell:before, #w_62182423 .title-shell:after { background: url(data:image/svg+xml;base64,CjxzdmcgaGVpZ2h0PSI5IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2RiZGJkYiIgZD0iTTAsNC41TDEsNC41IiBzdHJva2Utd2lkdGg9IjFweCI+PC9wYXRoPjwvc3ZnPgo=); background-position: 50% 50%; background-repeat: repeat-x; } </style>
+                                                            <div class="title-wrapper">
+                                                               <div class="title-shell">
+                                                                  <h2 class="title stop-css mod--fs_21"> АВТОРСКОЕ СОПРОВОЖДЕНИЕ </h2>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                                <div class="col col-md-24">
+                                                   <div class="widget" id="widget_20532215" data-id="20532215" data-type="simple-text">
+                                                      <div class="element simple-text transparentbg" id="w_20532215" style="background-color: transparent; ">
+                                                         <div class="text-box text-box-test1 nocolumns" style="max-width: 100%; -moz-column-gap: 50px; -webkit-column-gap: 50px; column-gap: 50px; letter-spacing: 0em; line-height: 1.3; font-family: 'Didact Gothic'; font-size: 16px !important; margin: 0 auto; ">
+                                                            <p class="mod--fs_16"><span style="background-color: inherit; color: rgb(105, 105, 105); letter-spacing: 0em;">На данном этапе осуществляется визуальный контроль над реализацией дизайн-проекта.</span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="color: rgb(105, 105, 105); letter-spacing: 0em; line-height: 1.3; background-color: inherit;">Это комплекс мероприятий, осуществляемый автором проекта&nbsp; для того, чтобы обеспечить реализацию дизайн-проекта именно в том виде, в каком он был задуман и спроектирован. В случаях, когда требуются изменения или дополнения проектных решений, &nbsp;обеспечить внесение таких изменений именно автором проекта, как стороной, имеющей комплексное представление обо всех проектных решениях и их взаимосвязи.</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="color: rgb(105, 105, 105); letter-spacing: 0em; line-height: 1.3; background-color: inherit;">Авторский надзор НЕ ЯВЛЯЕТСЯ ТЕХНИЧЕСКИМ НАДЗОРОМ ПО КАЧЕСТВУ выполняемых строительно-монтажных работ.&nbsp;</span></span></p>
+                                                            <p class="mod--fs_16"><br> <span style="font-size:16px;" class="mod--fs_16"><span style="color:#696969;">СОСТАВ РАБОТ:</span></span></p>
+                                                            <p class="mod--fs_16">&nbsp;</p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="color:#696969;">- регулярные выезды на объект (один раз в неделю)</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="color:#696969;">- визуальный контроль проводимых работ в соответствии с дизайн-проектом, а именно: соблюдение размеров и привязок конструкций (перегородок и проемов), электрики (розеток, выключателей, электро-выводов), сантехники, потолков, осветительных приборов, элементов отделки</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="color: rgb(105, 105, 105); letter-spacing: 0em; line-height: 1.3; background-color: transparent;">-&nbsp;необходимое общение с прорабом на объекте, в том числе и по телефону (консультации по всем предоставленным чертежам)</span></span></p>
+                                                            <p class="mod--fs_16"><span style="font-size:16px;" class="mod--fs_16"><span style="color:#696969;">-&nbsp;</span><span style="color: rgb(105, 105, 105); letter-spacing: 0em; line-height: 1.3; background-color: inherit;">внесение изменений в чертежи проекта, возникших при демонтаже старых и возведении новых перегородок, после выравнивания полов, стен и потолков</span></span></p>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                             <div class="row">
+                                             </div>
+                                             <div class="row pb-10">
+                                                <div class="col col-md-24">
+                                                   <div class="whatsapp contact-form-button-wrapper pt-5">
+                                                      <a href="https://wa.me/777777777" class="button primary w-button" style="display: flex; background-color: #25D366; justify-content: center;" onmouseover="this.style.backgroundColor='#1AAE4F';"  onmouseout="this.style.backgroundColor='#25D366';">
+                                                      Написать в Whatsapp 
+                                                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 5 70 64" style="vertical-align: middle; margin-left: 5px;">
+                                                         <path fill="#FFFFFF" d="M 25 2 C 12.309534 2 2 12.309534 2 25 C 2 29.079097 3.1186875 32.88588 4.984375 36.208984 L 2.0371094 46.730469 A 1.0001 1.0001 0 0 0 3.2402344 47.970703 L 14.210938 45.251953 C 17.434629 46.972929 21.092591 48 25 48 C 37.690466 48 48 37.690466 48 25 C 48 12.309534 37.690466 2 25 2 z M 25 4 C 36.609534 4 46 13.390466 46 25 C 46 36.609534 36.609534 46 25 46 C 21.278025 46 17.792121 45.029635 14.761719 43.333984 A 1.0001 1.0001 0 0 0 14.033203 43.236328 L 4.4257812 45.617188 L 7.0019531 36.425781 A 1.0001 1.0001 0 0 0 6.9023438 35.646484 C 5.0606869 32.523592 4 28.890107 4 25 C 4 13.390466 13.390466 4 25 4 z M 16.642578 13 C 16.001539 13 15.086045 13.23849 14.333984 14.048828 C 13.882268 14.535548 12 16.369511 12 19.59375 C 12 22.955271 14.331391 25.855848 14.613281 26.228516 L 14.615234 26.228516 L 14.615234 26.230469 C 14.588494 26.195329 14.973031 26.752191 15.486328 27.419922 C 15.999626 28.087653 16.717405 28.96464 17.619141 29.914062 C 19.422612 31.812909 21.958282 34.007419 25.105469 35.349609 C 26.554789 35.966779 27.698179 36.339417 28.564453 36.611328 C 30.169845 37.115426 31.632073 37.038799 32.730469 36.876953 C 33.55263 36.755876 34.456878 36.361114 35.351562 35.794922 C 36.246248 35.22873 37.12309 34.524722 37.509766 33.455078 C 37.786772 32.688244 37.927591 31.979598 37.978516 31.396484 C 38.003976 31.104927 38.007211 30.847602 37.988281 30.609375 C 37.969311 30.371148 37.989581 30.188664 37.767578 29.824219 C 37.302009 29.059804 36.774753 29.039853 36.224609 28.767578 C 35.918939 28.616297 35.048661 28.191329 34.175781 27.775391 C 33.303883 27.35992 32.54892 26.991953 32.083984 26.826172 C 31.790239 26.720488 31.431556 26.568352 30.914062 26.626953 C 30.396569 26.685553 29.88546 27.058933 29.587891 27.5 C 29.305837 27.918069 28.170387 29.258349 27.824219 29.652344 C 27.819619 29.649544 27.849659 29.663383 27.712891 29.595703 C 27.284761 29.383815 26.761157 29.203652 25.986328 28.794922 C 25.2115 28.386192 24.242255 27.782635 23.181641 26.847656 L 23.181641 26.845703 C 21.603029 25.455949 20.497272 23.711106 20.148438 23.125 C 20.171937 23.09704 20.145643 23.130901 20.195312 23.082031 L 20.197266 23.080078 C 20.553781 22.728924 20.869739 22.309521 21.136719 22.001953 C 21.515257 21.565866 21.68231 21.181437 21.863281 20.822266 C 22.223954 20.10644 22.02313 19.318742 21.814453 18.904297 L 21.814453 18.902344 C 21.828863 18.931014 21.701572 18.650157 21.564453 18.326172 C 21.426943 18.001263 21.251663 17.580039 21.064453 17.130859 C 20.690033 16.232501 20.272027 15.224912 20.023438 14.634766 L 20.023438 14.632812 C 19.730591 13.937684 19.334395 13.436908 18.816406 13.195312 C 18.298417 12.953717 17.840778 13.022402 17.822266 13.021484 L 17.820312 13.021484 C 17.450668 13.004432 17.045038 13 16.642578 13 z M 16.642578 15 C 17.028118 15 17.408214 15.004701 17.726562 15.019531 C 18.054056 15.035851 18.033687 15.037192 17.970703 15.007812 C 17.906713 14.977972 17.993533 14.968282 18.179688 15.410156 C 18.423098 15.98801 18.84317 16.999249 19.21875 17.900391 C 19.40654 18.350961 19.582292 18.773816 19.722656 19.105469 C 19.863021 19.437122 19.939077 19.622295 20.027344 19.798828 L 20.027344 19.800781 L 20.029297 19.802734 C 20.115837 19.973483 20.108185 19.864164 20.078125 19.923828 C 19.867096 20.342656 19.838461 20.445493 19.625 20.691406 C 19.29998 21.065838 18.968453 21.483404 18.792969 21.65625 C 18.639439 21.80707 18.36242 22.042032 18.189453 22.501953 C 18.016221 22.962578 18.097073 23.59457 18.375 24.066406 C 18.745032 24.6946 19.964406 26.679307 21.859375 28.347656 C 23.05276 29.399678 24.164563 30.095933 25.052734 30.564453 C 25.940906 31.032973 26.664301 31.306607 26.826172 31.386719 C 27.210549 31.576953 27.630655 31.72467 28.119141 31.666016 C 28.607627 31.607366 29.02878 31.310979 29.296875 31.007812 L 29.298828 31.005859 C 29.655629 30.601347 30.715848 29.390728 31.224609 28.644531 C 31.246169 28.652131 31.239109 28.646231 31.408203 28.707031 L 31.408203 28.708984 L 31.410156 28.708984 C 31.487356 28.736474 32.454286 29.169267 33.316406 29.580078 C 34.178526 29.990889 35.053561 30.417875 35.337891 30.558594 C 35.748225 30.761674 35.942113 30.893881 35.992188 30.894531 C 35.995572 30.982516 35.998992 31.07786 35.986328 31.222656 C 35.951258 31.624292 35.8439 32.180225 35.628906 32.775391 C 35.523582 33.066746 34.975018 33.667661 34.283203 34.105469 C 33.591388 34.543277 32.749338 34.852514 32.4375 34.898438 C 31.499896 35.036591 30.386672 35.087027 29.164062 34.703125 C 28.316336 34.437036 27.259305 34.092596 25.890625 33.509766 C 23.114812 32.325956 20.755591 30.311513 19.070312 28.537109 C 18.227674 27.649908 17.552562 26.824019 17.072266 26.199219 C 16.592866 25.575584 16.383528 25.251054 16.208984 25.021484 L 16.207031 25.019531 C 15.897202 24.609805 14 21.970851 14 19.59375 C 14 17.077989 15.168497 16.091436 15.800781 15.410156 C 16.132721 15.052495 16.495617 15 16.642578 15 z"></path>
+                                                      </svg>
+                                                      </a>
+                                                   </div>
+                                                   <div class="telegram contact-form-button-wrapper pt-5">
+                                                      <a href="https://t.me/john" class="button primary w-button" style="display: flex; background-color: #229ED9;justify-content: center;" onmouseover="this.style.backgroundColor='#1678B0';" onmouseout="this.style.backgroundColor='#229ED9';">Написать в Telegram <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0 10 64 64">
+                                                         <path fill="#FFFFFF" d="M32,10c12.15,0,22,9.85,22,22s-9.85,22-22,22s-22-9.85-22-22S19.85,10,32,10z M39.589,40.968	c0.404-1.241,2.301-13.615,2.534-16.054c0.071-0.738-0.163-1.229-0.619-1.449c-0.553-0.265-1.371-0.133-2.322,0.21	c-1.303,0.47-17.958,7.541-18.92,7.951c-0.912,0.388-1.775,0.81-1.775,1.423c0,0.431,0.256,0.673,0.96,0.924	c0.732,0.261,2.577,0.82,3.668,1.121c1.05,0.29,2.243,0.038,2.913-0.378c0.709-0.441,8.901-5.921,9.488-6.402	c0.587-0.48,1.056,0.135,0.576,0.616c-0.48,0.48-6.102,5.937-6.844,6.693c-0.901,0.917-0.262,1.868,0.343,2.249	c0.689,0.435,5.649,3.761,6.396,4.295c0.747,0.534,1.504,0.776,2.198,0.776C38.879,42.942,39.244,42.028,39.589,40.968z"></path>
+                                                         </svg> </a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- modal window section -->
+      <!-- footer -->
 
+      <footer class="bg-white rounded-lg m-4 pt-20" style="position: relative; z-index: 2;">
+         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+             <div class="sm:flex sm:items-center sm:justify-between">
+                 <a href="{% url 'home' %}" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                     <img src="/media/media/tobe_mainlogo_dark.png" class="h-8" alt="Flowbite Logo" />
+                     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">TÓBE</span>
+                 </a>
+                 <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                     <li>
+                         <a href="{% url 'about' %}" class="hover:underline me-4 md:me-6">О нас</a>
+                     </li>
+                     <li>
+                         <a href="#" class="hover:underline me-4 md:me-6">Конфиденциальность</a>
+                     </li>
+                     <li>
+                         <a href="#" class="hover:underline me-4 md:me-6">Лицензирование</a>
+                     </li>
+                     <li>
+                         <a href="{% url 'contact' %}" class="hover:underline">Контакты</a>
+                     </li>
+                 </ul>
+             </div>
+             <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+             <div class="sm:flex sm:items-center sm:justify-between">
+                 <span class="text-sm text-gray-500 sm:text-center">© 2023 <a href="index.html"  class="hover:underline">Tóbe™</a>. Все права защищены.
+                 </span>
+                 <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+                  <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                  </a>
+                  <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                  </a>
+                  <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+                      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                  </a>
 
-  <!-- <script>
-    const dropdownButton = document.getElementById('dropdownDefaultButton');
-    const dropdownMenu = document.getElementById('dropdown');
-    const exteriorButton = document.getElementById('exteriorButton');
-    const blogButton = document.getElementById('blogButton');
-    const contactButton = document.getElementById('contactButton');
-    // const moveAmount = screenHeight * 0.15; // Adjust this percentage as needed
-    const mainBeginingContent = document.getElementById('mainBeginingContent');
-
-    dropdownButton.addEventListener('click', function() {
-        if (dropdownMenu.classList.contains('hidden')) {
-            // exteriorButton.style.transform = 'translateY(15vh)';
-            blogButton.style.transform = 'translateY(10vh)';
-            contactButton.style.transform = 'translateY(10vh)';
-            // mainBeginingContent.style.transform = 'translateY(10vh)';
-        } else {
-            // exteriorButton.style.transform = 'translateY(0)';
-            blogButton.style.transform = 'translateY(0)';
-            contactButton.style.transform = 'translateY(0)';
-            // mainBeginingContent.style.transform = 'translateY(0)';
-        }
-    });
-</script> -->
-
-
-    
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@latest/dist/flowbite.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-
-
-
-
-</body>
+              </div>
+             </div>
+         </div>
+     </footer>
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@latest/dist/flowbite.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+      <script src="https://cdn.flowbite.com/flowbite.js"></script>
+   </body>
 </html>
